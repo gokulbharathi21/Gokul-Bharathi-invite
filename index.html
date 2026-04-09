@@ -25,7 +25,8 @@
       position: relative;
     }
 
-    .welcome-screen {
+    /* AUTO INTRO */
+    .intro-screen {
       position: fixed;
       inset: 0;
       background: linear-gradient(180deg, #fff4f4, #fde7ea);
@@ -35,38 +36,52 @@
       text-align: center;
       z-index: 9999;
       padding: 20px;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
+      transition: opacity 1s ease, visibility 1s ease;
     }
 
-    .welcome-screen.hide {
+    .intro-screen.hide {
       opacity: 0;
       visibility: hidden;
     }
 
-    .welcome-box h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 62px;
-      color: #b03a5b;
-      margin-bottom: 16px;
+    .intro-box {
+      animation: fadeIn 1.5s ease;
     }
 
-    .welcome-box p {
-      font-size: 18px;
+    .intro-box h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 70px;
+      color: #b03a5b;
+      margin-bottom: 18px;
+    }
+
+    .intro-box p {
+      font-size: 20px;
       color: #6d4c41;
-      margin-bottom: 24px;
       line-height: 1.8;
     }
 
-    .open-btn {
-      padding: 14px 30px;
+    .loading-text {
+      margin-top: 25px;
+      font-size: 15px;
+      color: #a05252;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .music-btn {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      background: #b03a5b;
+      color: #fff;
       border: none;
       border-radius: 999px;
-      background: linear-gradient(135deg, #b03a5b, #d96c8f);
-      color: #fff;
-      font-size: 16px;
-      font-weight: 600;
+      padding: 14px 18px;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(176, 58, 91, 0.25);
+      font-size: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+      z-index: 1000;
     }
 
     .petal {
@@ -167,45 +182,6 @@
       color: #8b5a5a;
       margin-top: 28px;
       line-height: 1.8;
-    }
-
-    .song-card {
-      max-width: 360px;
-      margin: 30px auto 0;
-      padding: 28px 24px;
-      background: rgba(255,255,255,0.96);
-      border-radius: 28px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-      border: 1px solid #f2d8d8;
-    }
-
-    .song-card h3 {
-      font-size: 28px;
-      color: #b03a5b;
-      margin-bottom: 12px;
-    }
-
-    .song-card p {
-      font-size: 15px;
-      color: #6d4c41;
-      line-height: 1.8;
-    }
-
-    .song-play-btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 28px;
-      background: linear-gradient(135deg, #b03a5b, #d96c8f);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 999px;
-      font-weight: 600;
-      box-shadow: 0 10px 20px rgba(176, 58, 91, 0.25);
-      transition: transform 0.3s ease;
-    }
-
-    .song-play-btn:hover {
-      transform: scale(1.05);
     }
 
     .upload-card {
@@ -353,7 +329,7 @@
 
     @media (max-width: 768px) {
       h1 { font-size: 56px; }
-      .welcome-box h1 { font-size: 48px; }
+      .intro-box h1 { font-size: 52px; }
       .section h2 { font-size: 42px; }
       .sub-text { font-size: 16px; }
       .time-box { width: 90px; padding: 18px 12px; }
@@ -365,13 +341,20 @@
 </head>
 <body>
 
-  <div class="welcome-screen" id="welcomeScreen">
-    <div class="welcome-box">
+  <!-- AUTO INTRO -->
+  <div class="intro-screen" id="introScreen">
+    <div class="intro-box">
       <h1>Gokul & Bharathi</h1>
-      <p>With love and joy, we invite you to celebrate our wedding</p>
-      <button class="open-btn" onclick="openInvite()">Open Invitation</button>
+      <p>Wedding Invitation</p>
+      <div class="loading-text">Loading Invitation...</div>
     </div>
   </div>
+
+  <button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
+
+  <audio id="bgMusic" loop playsinline preload="auto">
+    <source src="./Song.mp3" type="audio/mpeg">
+  </audio>
 
   <div class="petal" style="left: 5%; animation-duration: 10s;">🌸</div>
   <div class="petal" style="left: 15%; animation-duration: 12s;">🌸</div>
@@ -402,17 +385,6 @@
     </p>
     <div class="quote">
       “Together is a beautiful place to be.”
-    </div>
-  </section>
-
-  <section class="section" style="background:#fff6f3;">
-    <h2>Wedding Melody 🎶</h2>
-    <p>Tap below to listen to our special song</p>
-
-    <div class="song-card">
-      <h3>Play Our Song</h3>
-      <p>Open and enjoy the music that makes this day even more special.</p>
-      <a href="./Song.mp3" target="_blank" class="song-play-btn">🎵 Play Song</a>
     </div>
   </section>
 
@@ -469,8 +441,41 @@
   </div>
 
   <script>
-    function openInvite() {
-      document.getElementById("welcomeScreen").classList.add("hide");
+    const music = document.getElementById("bgMusic");
+    let isPlaying = false;
+    let introHidden = false;
+
+    // AUTO HIDE INTRO
+    setTimeout(() => {
+      document.getElementById("introScreen").classList.add("hide");
+      introHidden = true;
+    }, 3500);
+
+    // First tap anywhere starts music (best iPhone-safe method)
+    document.addEventListener("click", function startMusicOnce() {
+      if (!isPlaying) {
+        music.volume = 0.5;
+        music.play().then(() => {
+          isPlaying = true;
+        }).catch((err) => {
+          console.log("Music blocked:", err);
+        });
+      }
+      document.removeEventListener("click", startMusicOnce);
+    });
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        isPlaying = false;
+      } else {
+        music.play().then(() => {
+          isPlaying = true;
+        }).catch((err) => {
+          alert("Music could not play. Please check Song.mp3 format.");
+          console.log(err);
+        });
+      }
     }
 
     const weddingDate = new Date(2026, 10, 21, 0, 0, 0).getTime();
