@@ -30,7 +30,7 @@
       position:relative;
     }
 
-    /* ICE INTRO */
+    /* INTRO */
     .intro-loader{
       position:fixed;
       inset:0;
@@ -134,6 +134,60 @@
     @keyframes snowfall{
       0% { transform: translateY(-10%) translateX(0); }
       100% { transform: translateY(100%) translateX(20px); }
+    }
+
+    /* MIST */
+    .mist{
+      position:fixed;
+      inset:0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.30), transparent 25%),
+        radial-gradient(circle at 70% 60%, rgba(255,255,255,0.25), transparent 28%),
+        radial-gradient(circle at 50% 85%, rgba(255,255,255,0.22), transparent 22%);
+      filter:blur(40px);
+      animation:mistMove 18s ease-in-out infinite alternate;
+      pointer-events:none;
+      z-index:1;
+    }
+
+    @keyframes mistMove{
+      from{ transform:translateY(0) translateX(0); }
+      to{ transform:translateY(20px) translateX(15px); }
+    }
+
+    /* FLOWERS */
+    .flowers{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:1;
+      overflow:hidden;
+    }
+
+    .petal{
+      position:absolute;
+      top:-10%;
+      font-size:22px;
+      animation:petalFall linear infinite;
+      opacity:.75;
+    }
+
+    .petal:nth-child(1){ left:8%; animation-duration:12s; animation-delay:0s; }
+    .petal:nth-child(2){ left:18%; animation-duration:16s; animation-delay:2s; }
+    .petal:nth-child(3){ left:30%; animation-duration:14s; animation-delay:4s; }
+    .petal:nth-child(4){ left:42%; animation-duration:18s; animation-delay:1s; }
+    .petal:nth-child(5){ left:55%; animation-duration:15s; animation-delay:3s; }
+    .petal:nth-child(6){ left:68%; animation-duration:17s; animation-delay:5s; }
+    .petal:nth-child(7){ left:80%; animation-duration:13s; animation-delay:2s; }
+    .petal:nth-child(8){ left:92%; animation-duration:19s; animation-delay:4s; }
+
+    @keyframes petalFall{
+      0%{
+        transform:translateY(-10%) rotate(0deg) translateX(0);
+      }
+      100%{
+        transform:translateY(110vh) rotate(360deg) translateX(30px);
+      }
     }
 
     /* BLOBS */
@@ -261,6 +315,34 @@
       font-weight:600;
       background:rgba(255,255,255,0.72);
       box-shadow:0 10px 22px rgba(215,119,149,0.08);
+    }
+
+    /* MESSAGE BOX */
+    .message-box{
+      max-width:760px;
+      margin:0 auto;
+      padding:42px 28px;
+      border-radius:32px;
+      background:rgba(255,255,255,0.68);
+      border:1px solid rgba(215,119,149,0.12);
+      box-shadow:0 18px 45px rgba(215,119,149,0.10);
+      backdrop-filter:blur(10px);
+      transform:scale(0.92);
+      opacity:0.65;
+      transition:all 0.8s ease;
+    }
+
+    .message-box.active{
+      transform:scale(1.05);
+      opacity:1;
+      box-shadow:0 28px 60px rgba(215,119,149,0.14);
+    }
+
+    .message-text{
+      font-family:'Cormorant Garamond',serif;
+      font-size:30px;
+      line-height:1.9;
+      color:#7b5b67;
     }
 
     /* COUNTDOWN */
@@ -499,8 +581,9 @@
       cursor:pointer;
     }
 
+    /* FOOTER */
     .footer{
-      padding:50px 20px 70px;
+      padding:60px 20px 80px;
       color:#a07786;
       font-size:15px;
       position:relative;
@@ -508,10 +591,33 @@
     }
 
     .footer-monogram{
-      font-family:'Cormorant Garamond',serif;
-      font-size:48px;
+      position:relative;
+      display:inline-block;
+      margin-bottom:12px;
+    }
+
+    .combined-gb{
+      font-family:'Great Vibes',cursive;
+      font-size:110px;
+      line-height:1;
       color:#c75d7c;
-      margin-bottom:8px;
+      letter-spacing:-18px;
+      text-shadow:
+        0 0 18px rgba(215,119,149,0.12),
+        0 6px 18px rgba(215,119,149,0.08);
+      position:relative;
+    }
+
+    .combined-gb::after{
+      content:"❤";
+      position:absolute;
+      font-size:26px;
+      color:#e27b9a;
+      top:32px;
+      left:50%;
+      transform:translateX(-50%);
+      animation:heartBeat 1.5s infinite ease-in-out;
+      filter:drop-shadow(0 0 10px rgba(226,123,154,0.28));
     }
 
     .footer-hashtag{
@@ -536,7 +642,10 @@
       .ice-name{font-size:58px}
       .main-script{font-size:58px}
       .sub-text{font-size:26px}
+      .message-text{font-size:24px}
       .upload-heading{font-size:42px}
+      .combined-gb{font-size:86px; letter-spacing:-12px;}
+      .combined-gb::after{top:26px;}
 
       .upload-circle{
         width:210px;
@@ -575,23 +684,30 @@
 </head>
 <body>
 
-  <!-- ICE INTRO -->
+  <!-- INTRO -->
   <div class="intro-loader" id="introLoader">
     <div class="snow"></div>
     <div class="snow2"></div>
     <div class="snow3"></div>
+    <div class="mist"></div>
 
     <div class="ice-name">Gokul & Bharathi</div>
     <div class="ice-sub">A Beautiful Beginning</div>
     <div class="loader-ring"></div>
   </div>
 
-  <!-- SNOW -->
-  <div class="snow"></div>
-  <div class="snow2"></div>
-  <div class="snow3"></div>
+  <!-- EFFECTS -->
+  <div class="flowers">
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+  </div>
 
-  <!-- BLOBS -->
   <div class="blob one"></div>
   <div class="blob two"></div>
   <div class="blob three"></div>
@@ -619,6 +735,18 @@
       </div>
 
       <div class="hero-date">21st November 2026</div>
+    </div>
+  </section>
+
+  <!-- MESSAGE -->
+  <section class="section">
+    <div class="message-box" id="messageBox">
+      <div class="message-text">
+        Your presence and blessings would mean the world to us<br>
+        as we celebrate this beautiful new beginning.<br>
+        We would be honoured to have you join us on our special day.<br><br>
+        — With love, Gokul & Bharathi
+      </div>
     </div>
   </section>
 
@@ -751,7 +879,7 @@
 
   <!-- FOOTER -->
   <div class="footer">
-    <div class="footer-monogram">GB</div>
+    <div class="footer-monogram combined-gb">GB</div>
     <div class="footer-hashtag">#gokulwedsbharathi</div>
   </div>
 
@@ -788,48 +916,53 @@
       document.removeEventListener("click", autoPlayOnce);
     });
 
-    // SMART COUNTDOWN (March 25 → Nov 21)
-    const startDate = new Date(2026, 2, 25, 0, 0, 0).getTime();
+    // COUNTDOWN
     const endDate = new Date(2026, 10, 21, 0, 0, 0).getTime();
-    const totalDuration = endDate - startDate;
 
-    function setCircleProgress(circleId, percent) {
+    function setCircle(circleId, value, max){
       const circle = document.getElementById(circleId);
       const radius = 54;
       const circumference = 2 * Math.PI * radius;
       circle.style.strokeDasharray = circumference;
-      const offset = circumference - percent * circumference;
+      const offset = circumference - (value / max) * circumference;
       circle.style.strokeDashoffset = offset;
     }
 
-    function updateCountdown() {
+    function updateCountdown(){
       const now = new Date().getTime();
-      let remaining = endDate - now;
+      let diff = endDate - now;
+      if(diff < 0) diff = 0;
 
-      if (remaining <= 0) {
-        remaining = 0;
-      }
-
-      const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+      const days = Math.floor(diff / (1000*60*60*24));
+      const hours = Math.floor((diff/(1000*60*60)) % 24);
+      const minutes = Math.floor((diff/(1000*60)) % 60);
+      const seconds = Math.floor((diff/1000) % 60);
 
       document.getElementById("days").textContent = days;
       document.getElementById("hours").textContent = hours;
       document.getElementById("minutes").textContent = minutes;
       document.getElementById("seconds").textContent = seconds;
 
-      const progress = remaining / totalDuration;
-
-      setCircleProgress("daysCircle", progress);
-      setCircleProgress("hoursCircle", progress);
-      setCircleProgress("minutesCircle", progress);
-      setCircleProgress("secondsCircle", progress);
+      setCircle("daysCircle", days, 365);
+      setCircle("hoursCircle", hours, 24);
+      setCircle("minutesCircle", minutes, 60);
+      setCircle("secondsCircle", seconds, 60);
     }
 
+    setInterval(updateCountdown,1000);
     updateCountdown();
-    setInterval(updateCountdown, 1000);
+
+    // MESSAGE BOX SCROLL ZOOM
+    const box = document.getElementById("messageBox");
+
+    window.addEventListener("scroll", () => {
+      const rect = box.getBoundingClientRect();
+      const trigger = window.innerHeight * 0.75;
+
+      if(rect.top < trigger){
+        box.classList.add("active");
+      }
+    });
 
     // PHOTO PREVIEW THEN GOOGLE PHOTOS
     const photoUpload = document.getElementById("photoUpload");
