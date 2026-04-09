@@ -17,90 +17,218 @@
       -webkit-tap-highlight-color:transparent;
     }
 
+    html{
+      scroll-behavior:smooth;
+    }
+
     body{
       font-family:'Montserrat',sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(38,34,80,0.4), transparent 30%),
-        linear-gradient(180deg,#05051a 0%, #070722 40%, #050514 100%);
-      color:#f5e9d0;
+      background:linear-gradient(180deg,#fff7fb 0%, #fff0f6 45%, #fff8fb 100%);
+      color:#6d4b57;
       overflow-x:hidden;
       text-align:center;
       position:relative;
     }
 
-    body::before, body::after{
-      content:"";
+    /* ICE INTRO */
+    .intro-loader{
       position:fixed;
-      width:180px;
-      height:180px;
-      border:1px solid rgba(214,176,74,0.18);
-      border-radius:28px;
+      inset:0;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.95), rgba(232,245,255,0.92)),
+        linear-gradient(180deg,#eef9ff 0%, #f9fdff 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+      flex-direction:column;
+      overflow:hidden;
+      transition:opacity 1.2s ease, visibility 1.2s ease;
+    }
+
+    .intro-loader.hide{
+      opacity:0;
+      visibility:hidden;
+    }
+
+    .intro-loader::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.65), transparent 25%),
+        radial-gradient(circle at 80% 30%, rgba(220,240,255,0.55), transparent 22%),
+        radial-gradient(circle at 60% 80%, rgba(255,255,255,0.45), transparent 22%);
+      filter:blur(12px);
+    }
+
+    .ice-name{
+      font-family:'Great Vibes',cursive;
+      font-size:82px;
+      color:#7fa9c7;
+      text-shadow:0 0 18px rgba(180,220,255,0.5);
+      animation:fadeUp 1.5s ease;
+      line-height:1.1;
+      z-index:2;
+    }
+
+    .ice-sub{
+      margin-top:10px;
+      font-size:15px;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      color:#8eaec2;
+      animation:fadeUp 1.8s ease;
+      z-index:2;
+    }
+
+    .loader-ring{
+      margin-top:28px;
+      width:62px;
+      height:62px;
+      border:4px solid rgba(127,169,199,0.18);
+      border-top:4px solid #8fc6e9;
+      border-radius:50%;
+      animation:spin 1s linear infinite;
+      z-index:2;
+    }
+
+    @keyframes spin{
+      100%{transform:rotate(360deg);}
+    }
+
+    /* SNOW */
+    .snow, .snow2, .snow3{
+      position:fixed;
+      top:-10%;
+      left:0;
+      width:100%;
+      height:120%;
+      pointer-events:none;
+      z-index:1;
+      background-repeat:repeat;
+      animation:snowfall linear infinite;
+      opacity:.55;
+    }
+
+    .snow{
+      background-image: radial-gradient(circle, rgba(255,255,255,.95) 2px, transparent 2px);
+      background-size: 120px 120px;
+      animation-duration: 18s;
+    }
+
+    .snow2{
+      background-image: radial-gradient(circle, rgba(255,255,255,.75) 1.5px, transparent 1.5px);
+      background-size: 90px 90px;
+      animation-duration: 26s;
+      opacity:.35;
+    }
+
+    .snow3{
+      background-image: radial-gradient(circle, rgba(255,255,255,.85) 1px, transparent 1px);
+      background-size: 70px 70px;
+      animation-duration: 32s;
+      opacity:.22;
+    }
+
+    @keyframes snowfall{
+      0% { transform: translateY(-10%) translateX(0); }
+      100% { transform: translateY(100%) translateX(20px); }
+    }
+
+    /* BLOBS */
+    .blob{
+      position:fixed;
+      border-radius:50%;
+      filter:blur(80px);
+      opacity:.24;
       z-index:0;
       pointer-events:none;
     }
 
-    body::before{
-      top:18px;
-      left:18px;
-      border-right:none;
-      border-bottom:none;
+    .blob.one{
+      width:220px;
+      height:220px;
+      background:#ffd5e4;
+      top:8%;
+      left:-60px;
     }
 
-    body::after{
-      bottom:18px;
-      right:18px;
-      border-left:none;
-      border-top:none;
+    .blob.two{
+      width:280px;
+      height:280px;
+      background:#ffe2ec;
+      bottom:8%;
+      right:-70px;
+    }
+
+    .blob.three{
+      width:200px;
+      height:200px;
+      background:#f9d9e7;
+      top:45%;
+      left:65%;
     }
 
     .section{
       padding:90px 20px;
       position:relative;
-      z-index:1;
+      z-index:2;
     }
 
     .divider{
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:18px;
-      margin-bottom:28px;
+      gap:16px;
+      margin-bottom:26px;
     }
 
     .divider-line{
-      width:120px;
+      width:110px;
       height:1px;
-      background:linear-gradient(to right, transparent, #cfa64a, transparent);
+      background:linear-gradient(to right, transparent, #d889a2, transparent);
     }
 
-    .divider-star{
-      color:#d7b04a;
-      font-size:26px;
+    .divider-heart{
+      color:#d77795;
+      font-size:22px;
+      animation:heartBeat 1.4s infinite ease-in-out;
+      transform-origin:center;
+    }
+
+    @keyframes heartBeat{
+      0%   { transform:scale(1); }
+      14%  { transform:scale(1.18); }
+      28%  { transform:scale(1); }
+      42%  { transform:scale(1.18); }
+      70%  { transform:scale(1); }
+      100% { transform:scale(1); }
     }
 
     .small-title{
-      letter-spacing:10px;
+      letter-spacing:8px;
       text-transform:uppercase;
-      color:#d9b8b8;
-      font-size:14px;
-      margin-bottom:20px;
+      color:#b88697;
+      font-size:13px;
+      margin-bottom:18px;
     }
 
     .main-script{
       font-family:'Great Vibes',cursive;
-      font-size:72px;
-      color:#e1bb5f;
+      font-size:76px;
+      color:#c75d7c;
       line-height:1.1;
       margin-bottom:18px;
     }
 
     .sub-text{
-      max-width:780px;
+      max-width:760px;
       margin:0 auto;
       font-family:'Cormorant Garamond',serif;
-      font-size:36px;
-      line-height:1.7;
-      color:#e7d6c5;
+      font-size:34px;
+      line-height:1.8;
+      color:#7b5b67;
     }
 
     .hero{
@@ -114,37 +242,39 @@
     .hero-box{
       max-width:900px;
       width:100%;
-      padding:55px 28px;
-      border-radius:36px;
-      background:rgba(255,255,255,0.03);
-      border:1px solid rgba(214,176,74,0.12);
-      box-shadow:0 0 40px rgba(0,0,0,0.28);
+      padding:54px 28px;
+      border-radius:34px;
+      background:rgba(255,255,255,0.62);
+      border:1px solid rgba(215,119,149,0.12);
+      box-shadow:0 15px 40px rgba(199,93,124,0.08);
       backdrop-filter:blur(8px);
+      animation:fadeUp 1.4s ease;
     }
 
     .hero-date{
       margin-top:26px;
       display:inline-block;
-      padding:14px 26px;
+      padding:14px 28px;
       border-radius:999px;
-      border:1px solid rgba(214,176,74,0.28);
-      color:#e6c56f;
-      font-weight:500;
-      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(215,119,149,0.18);
+      color:#c75d7c;
+      font-weight:600;
+      background:rgba(255,255,255,0.72);
+      box-shadow:0 10px 22px rgba(215,119,149,0.08);
     }
 
-    /* COUNTDOWN CLOCK STYLE */
+    /* COUNTDOWN */
     .countdown-wrap{
       display:flex;
       justify-content:center;
-      gap:24px;
+      gap:20px;
       flex-wrap:wrap;
-      margin-top:48px;
+      margin-top:44px;
     }
 
     .circle-box{
-      width:135px;
-      height:135px;
+      width:130px;
+      height:130px;
       position:relative;
       display:flex;
       align-items:center;
@@ -152,8 +282,8 @@
     }
 
     .circle-box svg{
-      width:135px;
-      height:135px;
+      width:130px;
+      height:130px;
       transform:rotate(-90deg);
       position:absolute;
       top:0;
@@ -162,16 +292,16 @@
 
     .circle-bg{
       fill:none;
-      stroke:rgba(214,176,74,0.12);
+      stroke:rgba(215,119,149,0.12);
       stroke-width:8;
     }
 
     .circle-progress{
       fill:none;
-      stroke:#d7b04a;
+      stroke:#d77795;
       stroke-width:8;
       stroke-linecap:round;
-      filter:drop-shadow(0 0 8px rgba(215,176,74,0.45));
+      filter:drop-shadow(0 0 6px rgba(215,119,149,0.28));
       transition:stroke-dashoffset 1s linear;
     }
 
@@ -182,24 +312,28 @@
       flex-direction:column;
       align-items:center;
       justify-content:center;
+      width:100%;
+      height:100%;
     }
 
     .circle-number{
-      font-size:34px;
-      color:#f3d784;
+      font-size:32px;
+      color:#c75d7c;
       font-weight:600;
       line-height:1;
+      margin-top:-4px;
     }
 
     .circle-label{
       margin-top:8px;
       font-size:12px;
-      letter-spacing:3px;
+      letter-spacing:2px;
       text-transform:uppercase;
-      color:#cda86d;
+      color:#a96d81;
+      line-height:1.2;
     }
 
-    /* UPLOAD SECTION */
+    /* UPLOAD */
     .upload-section{
       max-width:820px;
       margin:0 auto;
@@ -207,8 +341,8 @@
 
     .upload-heading{
       font-family:'Cormorant Garamond',serif;
-      font-size:56px;
-      color:#d7b04a;
+      font-size:54px;
+      color:#c75d7c;
       margin-top:18px;
       margin-bottom:18px;
       font-style:italic;
@@ -217,10 +351,10 @@
     .upload-desc{
       max-width:760px;
       margin:0 auto;
-      color:#bfb4c7;
+      color:#8c7080;
       font-size:18px;
       line-height:1.9;
-      letter-spacing:2px;
+      letter-spacing:1px;
     }
 
     .upload-circle-wrap{
@@ -230,11 +364,11 @@
     }
 
     .upload-circle{
-      width:250px;
-      height:250px;
+      width:240px;
+      height:240px;
       border-radius:50%;
-      border:2px dashed rgba(214,176,74,0.35);
-      background:radial-gradient(circle at top, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border:2px dashed rgba(215,119,149,0.25);
+      background:radial-gradient(circle at top, rgba(255,255,255,0.8), rgba(255,241,246,0.95));
       display:flex;
       flex-direction:column;
       align-items:center;
@@ -242,17 +376,17 @@
       cursor:pointer;
       position:relative;
       box-shadow:
-        inset 0 0 30px rgba(214,176,74,0.04),
-        0 0 30px rgba(0,0,0,0.18);
-      transition:transform .3s ease, box-shadow .3s ease;
+        inset 0 0 30px rgba(215,119,149,0.05),
+        0 0 28px rgba(215,119,149,0.08);
+      transition:box-shadow .3s ease;
       text-decoration:none;
+      animation:uploadFloat 3.2s ease-in-out infinite;
     }
 
     .upload-circle:hover{
-      transform:scale(1.03);
       box-shadow:
-        inset 0 0 30px rgba(214,176,74,0.08),
-        0 0 35px rgba(214,176,74,0.08);
+        inset 0 0 30px rgba(215,119,149,0.08),
+        0 0 35px rgba(215,119,149,0.12);
     }
 
     .upload-circle::before{
@@ -260,26 +394,46 @@
       position:absolute;
       inset:10px;
       border-radius:50%;
-      border:1px solid rgba(214,176,74,0.12);
+      border:1px solid rgba(215,119,149,0.14);
     }
 
     .upload-icon{
-      font-size:52px;
-      color:#d7b04a;
+      font-size:48px;
+      color:#d77795;
       margin-bottom:14px;
+      animation:uploadShake 2.8s ease-in-out infinite;
+      display:inline-block;
     }
 
-    .upload-text{
-      letter-spacing:6px;
-      text-transform:uppercase;
-      color:#c9a56d;
-      font-size:18px;
+    @keyframes uploadFloat{
+      0%   { transform:translateY(0px); }
+      50%  { transform:translateY(-8px); }
+      100% { transform:translateY(0px); }
+    }
+
+    @keyframes uploadShake{
+      0%   { transform:rotate(0deg); }
+      20%  { transform:rotate(-6deg); }
+      40%  { transform:rotate(6deg); }
+      60%  { transform:rotate(-4deg); }
+      80%  { transform:rotate(4deg); }
+      100% { transform:rotate(0deg); }
+    }
+
+    #previewImage{
+      display:none;
+      width:100%;
+      max-width:340px;
+      margin:20px auto 0;
+      border-radius:22px;
+      box-shadow:0 12px 28px rgba(215,119,149,0.12);
+      border:1px solid rgba(215,119,149,0.12);
     }
 
     .upload-note{
       margin-top:20px;
       font-size:15px;
-      color:#d6bf8c;
+      color:#9a7a86;
       line-height:1.8;
     }
 
@@ -296,21 +450,21 @@
       width:100%;
       max-width:320px;
       padding:34px 24px;
-      border-radius:30px;
-      background:rgba(255,255,255,0.03);
-      border:1px solid rgba(214,176,74,0.12);
-      box-shadow:0 0 28px rgba(0,0,0,0.18);
+      border-radius:28px;
+      background:rgba(255,255,255,0.72);
+      border:1px solid rgba(215,119,149,0.12);
+      box-shadow:0 12px 30px rgba(215,119,149,0.08);
     }
 
     .card h3{
-      color:#e0bf69;
+      color:#c75d7c;
       font-size:28px;
       margin-bottom:16px;
       font-family:'Cormorant Garamond',serif;
     }
 
     .card p{
-      color:#d5c6b3;
+      color:#7b5b67;
       line-height:1.9;
       font-size:17px;
     }
@@ -320,11 +474,13 @@
       margin-top:20px;
       padding:14px 26px;
       border-radius:999px;
-      background:linear-gradient(135deg,#d1a843,#b98a24);
-      color:#111;
+      background:linear-gradient(135deg,#d77795,#c75d7c);
+      color:#fff;
       text-decoration:none;
       font-weight:600;
-      box-shadow:0 8px 18px rgba(214,176,74,0.18);
+      box-shadow:0 8px 18px rgba(215,119,149,0.18);
+      border:none;
+      cursor:pointer;
     }
 
     .music-btn{
@@ -334,52 +490,111 @@
       width:62px;
       height:62px;
       border-radius:50%;
-      border:1px solid rgba(214,176,74,0.4);
-      background:rgba(255,255,255,0.04);
-      color:#d7b04a;
+      border:1px solid rgba(215,119,149,0.28);
+      background:rgba(255,255,255,0.8);
+      color:#d77795;
       font-size:24px;
       z-index:1000;
-      box-shadow:0 0 20px rgba(214,176,74,0.08);
+      box-shadow:0 0 18px rgba(215,119,149,0.08);
       cursor:pointer;
     }
 
     .footer{
-      padding:40px 20px 60px;
-      color:#8f7b5c;
+      padding:50px 20px 70px;
+      color:#a07786;
       font-size:15px;
+      position:relative;
+      z-index:2;
+    }
+
+    .footer-monogram{
+      font-family:'Cormorant Garamond',serif;
+      font-size:48px;
+      color:#c75d7c;
+      margin-bottom:8px;
+    }
+
+    .footer-hashtag{
+      font-size:16px;
+      letter-spacing:2px;
+      color:#b67d90;
+      font-weight:500;
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(24px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
     }
 
     @media (max-width:768px){
-      .main-script{font-size:54px}
+      .ice-name{font-size:58px}
+      .main-script{font-size:58px}
       .sub-text{font-size:26px}
       .upload-heading{font-size:42px}
+
       .upload-circle{
-        width:220px;
-        height:220px;
+        width:210px;
+        height:210px;
       }
+
       .circle-box{
-        width:110px;
-        height:110px;
+        width:108px;
+        height:108px;
       }
+
       .circle-box svg{
-        width:110px;
-        height:110px;
+        width:108px;
+        height:108px;
       }
+
       .circle-number{
         font-size:28px;
       }
+
+      .circle-label{
+        font-size:11px;
+        letter-spacing:1px;
+      }
+
       .small-title{
-        letter-spacing:7px;
+        letter-spacing:6px;
         font-size:12px;
       }
+
       .upload-desc{
         font-size:16px;
-        letter-spacing:1px;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- ICE INTRO -->
+  <div class="intro-loader" id="introLoader">
+    <div class="snow"></div>
+    <div class="snow2"></div>
+    <div class="snow3"></div>
+
+    <div class="ice-name">Gokul & Bharathi</div>
+    <div class="ice-sub">A Beautiful Beginning</div>
+    <div class="loader-ring"></div>
+  </div>
+
+  <!-- SNOW -->
+  <div class="snow"></div>
+  <div class="snow2"></div>
+  <div class="snow3"></div>
+
+  <!-- BLOBS -->
+  <div class="blob one"></div>
+  <div class="blob two"></div>
+  <div class="blob three"></div>
 
   <!-- MUSIC -->
   <button class="music-btn" onclick="toggleMusic()">🎵</button>
@@ -392,7 +607,7 @@
     <div class="hero-box">
       <div class="divider">
         <div class="divider-line"></div>
-        <div class="divider-star">✦</div>
+        <div class="divider-heart">❤</div>
         <div class="divider-line"></div>
       </div>
 
@@ -411,7 +626,7 @@
   <section class="section">
     <div class="divider">
       <div class="divider-line"></div>
-      <div class="divider-star">✦</div>
+      <div class="divider-heart">❤</div>
       <div class="divider-line"></div>
     </div>
 
@@ -422,9 +637,9 @@
 
     <div class="countdown-wrap">
       <div class="circle-box">
-        <svg>
-          <circle class="circle-bg" cx="67.5" cy="67.5" r="56"></circle>
-          <circle class="circle-progress" id="daysCircle" cx="67.5" cy="67.5" r="56"></circle>
+        <svg viewBox="0 0 130 130">
+          <circle class="circle-bg" cx="65" cy="65" r="54"></circle>
+          <circle class="circle-progress" id="daysCircle" cx="65" cy="65" r="54"></circle>
         </svg>
         <div class="circle-content">
           <div class="circle-number" id="days">0</div>
@@ -433,9 +648,9 @@
       </div>
 
       <div class="circle-box">
-        <svg>
-          <circle class="circle-bg" cx="67.5" cy="67.5" r="56"></circle>
-          <circle class="circle-progress" id="hoursCircle" cx="67.5" cy="67.5" r="56"></circle>
+        <svg viewBox="0 0 130 130">
+          <circle class="circle-bg" cx="65" cy="65" r="54"></circle>
+          <circle class="circle-progress" id="hoursCircle" cx="65" cy="65" r="54"></circle>
         </svg>
         <div class="circle-content">
           <div class="circle-number" id="hours">0</div>
@@ -444,9 +659,9 @@
       </div>
 
       <div class="circle-box">
-        <svg>
-          <circle class="circle-bg" cx="67.5" cy="67.5" r="56"></circle>
-          <circle class="circle-progress" id="minutesCircle" cx="67.5" cy="67.5" r="56"></circle>
+        <svg viewBox="0 0 130 130">
+          <circle class="circle-bg" cx="65" cy="65" r="54"></circle>
+          <circle class="circle-progress" id="minutesCircle" cx="65" cy="65" r="54"></circle>
         </svg>
         <div class="circle-content">
           <div class="circle-number" id="minutes">0</div>
@@ -455,9 +670,9 @@
       </div>
 
       <div class="circle-box">
-        <svg>
-          <circle class="circle-bg" cx="67.5" cy="67.5" r="56"></circle>
-          <circle class="circle-progress" id="secondsCircle" cx="67.5" cy="67.5" r="56"></circle>
+        <svg viewBox="0 0 130 130">
+          <circle class="circle-bg" cx="65" cy="65" r="54"></circle>
+          <circle class="circle-progress" id="secondsCircle" cx="65" cy="65" r="54"></circle>
         </svg>
         <div class="circle-content">
           <div class="circle-number" id="seconds">0</div>
@@ -471,7 +686,7 @@
   <section class="section upload-section">
     <div class="divider">
       <div class="divider-line"></div>
-      <div class="divider-star">✦</div>
+      <div class="divider-heart">❤</div>
       <div class="divider-line"></div>
     </div>
 
@@ -481,27 +696,34 @@
     </div>
 
     <div class="upload-circle-wrap">
-      <a href="https://photos.app.goo.gl/a9eJXpcDNMeJuPK4A" target="_blank" class="upload-circle">
-        <div class="upload-icon">☁︎</div>
-        <div class="upload-text">Tap To Upload</div>
-      </a>
+      <label for="photoUpload" class="upload-circle">
+        <div class="upload-icon">📷</div>
+        <div class="upload-text">Select Photo</div>
+      </label>
+      <input type="file" id="photoUpload" accept="image/*" hidden>
     </div>
+
+    <img id="previewImage" alt="Preview">
 
     <div class="upload-heading">Capture & Share the Magic</div>
     <div class="upload-desc">
-      Captured a beautiful moment? Upload it to our shared album and help us treasure every laugh, every tear, and every heartfelt embrace.
+      Select your favorite moment here and then continue to upload it to our shared wedding album.
     </div>
 
-    <div class="upload-note">
-      Tap the circle above to open our Google Photos album and upload your pictures 💛
+    <div class="upload-note" id="uploadNote">
+      Choose a photo first 💗
     </div>
+
+    <a id="uploadBtn" href="https://photos.app.goo.gl/a9eJXpcDNMeJuPK4A" target="_blank" class="btn" style="display:none;">
+      Continue to Upload
+    </a>
   </section>
 
   <!-- DETAILS -->
   <section class="section">
     <div class="divider">
       <div class="divider-line"></div>
-      <div class="divider-star">✦</div>
+      <div class="divider-heart">❤</div>
       <div class="divider-line"></div>
     </div>
 
@@ -527,9 +749,20 @@
     </div>
   </section>
 
-  <div class="footer">Made with love for Gokul & Bharathi</div>
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-monogram">GB</div>
+    <div class="footer-hashtag">#gokulwedsbharathi</div>
+  </div>
 
   <script>
+    // INTRO LOADER
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("introLoader").classList.add("hide");
+      }, 2800);
+    });
+
     // MUSIC
     const music = document.getElementById("bgMusic");
     let isPlaying = false;
@@ -555,48 +788,68 @@
       document.removeEventListener("click", autoPlayOnce);
     });
 
-    // COUNTDOWN WITH CLOCK-LIKE RINGS
-    const weddingDate = new Date(2026, 10, 21, 0, 0, 0).getTime();
+    // SMART COUNTDOWN (March 25 → Nov 21)
+    const startDate = new Date(2026, 2, 25, 0, 0, 0).getTime();
+    const endDate = new Date(2026, 10, 21, 0, 0, 0).getTime();
+    const totalDuration = endDate - startDate;
 
-    function setCircleProgress(circleId, value, max) {
+    function setCircleProgress(circleId, percent) {
       const circle = document.getElementById(circleId);
-      const radius = 56;
+      const radius = 54;
       const circumference = 2 * Math.PI * radius;
       circle.style.strokeDasharray = circumference;
-      const offset = circumference - (value / max) * circumference;
+      const offset = circumference - percent * circumference;
       circle.style.strokeDashoffset = offset;
     }
 
     function updateCountdown() {
       const now = new Date().getTime();
-      const distance = weddingDate - now;
+      let remaining = endDate - now;
 
-      if (distance <= 0) {
-        document.getElementById("days").textContent = 0;
-        document.getElementById("hours").textContent = 0;
-        document.getElementById("minutes").textContent = 0;
-        document.getElementById("seconds").textContent = 0;
-        return;
+      if (remaining <= 0) {
+        remaining = 0;
       }
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
 
       document.getElementById("days").textContent = days;
       document.getElementById("hours").textContent = hours;
       document.getElementById("minutes").textContent = minutes;
       document.getElementById("seconds").textContent = seconds;
 
-      setCircleProgress("daysCircle", Math.min(days, 365), 365);
-      setCircleProgress("hoursCircle", hours, 24);
-      setCircleProgress("minutesCircle", minutes, 60);
-      setCircleProgress("secondsCircle", seconds, 60);
+      const progress = remaining / totalDuration;
+
+      setCircleProgress("daysCircle", progress);
+      setCircleProgress("hoursCircle", progress);
+      setCircleProgress("minutesCircle", progress);
+      setCircleProgress("secondsCircle", progress);
     }
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
+
+    // PHOTO PREVIEW THEN GOOGLE PHOTOS
+    const photoUpload = document.getElementById("photoUpload");
+    const previewImage = document.getElementById("previewImage");
+    const uploadBtn = document.getElementById("uploadBtn");
+    const uploadNote = document.getElementById("uploadNote");
+
+    photoUpload.addEventListener("change", function () {
+      const file = this.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        previewImage.src = e.target.result;
+        previewImage.style.display = "block";
+        uploadBtn.style.display = "inline-block";
+        uploadNote.innerHTML = "Photo selected successfully 💗<br>Now tap <b>Continue to Upload</b>";
+      };
+      reader.readAsDataURL(file);
+    });
   </script>
 </body>
 </html>
