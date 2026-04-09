@@ -314,7 +314,7 @@
     /* MESSAGE BOX */
     .message-box{
       max-width:760px;
-      margin:0 auto;
+      margin:120px auto 0;
       padding:42px 28px;
       border-radius:32px;
       background:rgba(255,255,255,0.68);
@@ -381,18 +381,36 @@
       transition:stroke-dashoffset 1s linear;
     }
 
-    .circle-heart{
-      font-size:14px;
-      fill:#e27b9a;
-      filter:drop-shadow(0 0 6px rgba(226,123,154,0.4));
-      animation:heartGlow 2s ease-in-out infinite;
-      transform-origin:center;
-    }
-
-    @keyframes heartGlow{
-      0%   { opacity:0.6; transform:scale(1); }
-      50%  { opacity:1; transform:scale(1.2); }
-      100% { opacity:0.6; transform:scale(1); }
+    /* CUSTOM MOVING MARKER */
+    .moving-heart{
+      position:absolute;
+      top:50%;
+      left:50%;
+      width:24px;
+      height:24px;
+      margin:-12px;
+      z-index:4;
+      display:block;
+      pointer-events:none;
+      filter:
+        drop-shadow(0 0 8px rgba(215,119,149,0.30))
+        drop-shadow(0 0 14px rgba(255,255,255,0.45));
+      background-repeat:no-repeat;
+      background-size:contain;
+      background-position:center;
+      transform-origin:center center;
+      background-image:url("data:image/svg+xml;utf8,\
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>\
+        <defs>\
+          <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>\
+            <stop offset='0%' stop-color='%23ffd7e5'/>\
+            <stop offset='50%' stop-color='%23e89ab5'/>\
+            <stop offset='100%' stop-color='%23d77795'/>\
+          </linearGradient>\
+        </defs>\
+        <path d='M32 6 L50 20 L44 44 L32 58 L20 44 L14 20 Z' fill='url(%23g)' stroke='%23ffffff' stroke-width='2'/>\
+        <path d='M32 16 C36 12, 44 14, 44 22 C44 28, 38 32, 32 38 C26 32, 20 28, 20 22 C20 14, 28 12, 32 16 Z' fill='%23fff3f8' opacity='0.92'/>\
+      </svg>");
     }
 
     .circle-content{
@@ -624,6 +642,18 @@
       font-weight:500;
     }
 
+    /* SCROLL REVEAL */
+    .reveal{
+      opacity:0;
+      transform:translateY(50px);
+      transition:all 1s ease;
+    }
+
+    .reveal.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
     @keyframes fadeUp{
       from{
         opacity:0;
@@ -734,20 +764,8 @@
     </div>
   </section>
 
-  <!-- MESSAGE -->
-  <section class="section">
-    <div class="message-box" id="messageBox">
-      <div class="message-text">
-        Your presence and blessings would mean the world to us<br>
-        as we celebrate this beautiful new beginning.<br>
-        We would be honoured to have you join us on our special day.<br><br>
-        — With love, Gokul & Bharathi
-      </div>
-    </div>
-  </section>
-
   <!-- COUNTDOWN -->
-  <section class="section">
+  <section class="section reveal">
     <div class="divider">
       <div class="divider-line"></div>
       <div class="divider-symbol">❦</div>
@@ -761,10 +779,10 @@
 
     <div class="countdown-wrap">
       <div class="circle-box">
+        <div class="moving-heart" id="daysHeart"></div>
         <svg viewBox="0 0 130 130">
           <circle class="circle-bg" cx="65" cy="65" r="54"></circle>
           <circle class="circle-progress" id="daysCircle" cx="65" cy="65" r="54"></circle>
-          <text x="65" y="18" text-anchor="middle" class="circle-heart">❤</text>
         </svg>
         <div class="circle-content">
           <div class="circle-number" id="days">0</div>
@@ -773,10 +791,10 @@
       </div>
 
       <div class="circle-box">
+        <div class="moving-heart" id="hoursHeart"></div>
         <svg viewBox="0 0 130 130">
           <circle class="circle-bg" cx="65" cy="65" r="54"></circle>
           <circle class="circle-progress" id="hoursCircle" cx="65" cy="65" r="54"></circle>
-          <text x="65" y="18" text-anchor="middle" class="circle-heart">❤</text>
         </svg>
         <div class="circle-content">
           <div class="circle-number" id="hours">0</div>
@@ -785,10 +803,10 @@
       </div>
 
       <div class="circle-box">
+        <div class="moving-heart" id="minutesHeart"></div>
         <svg viewBox="0 0 130 130">
           <circle class="circle-bg" cx="65" cy="65" r="54"></circle>
           <circle class="circle-progress" id="minutesCircle" cx="65" cy="65" r="54"></circle>
-          <text x="65" y="18" text-anchor="middle" class="circle-heart">❤</text>
         </svg>
         <div class="circle-content">
           <div class="circle-number" id="minutes">0</div>
@@ -797,10 +815,10 @@
       </div>
 
       <div class="circle-box">
+        <div class="moving-heart" id="secondsHeart"></div>
         <svg viewBox="0 0 130 130">
           <circle class="circle-bg" cx="65" cy="65" r="54"></circle>
           <circle class="circle-progress" id="secondsCircle" cx="65" cy="65" r="54"></circle>
-          <text x="65" y="18" text-anchor="middle" class="circle-heart">❤</text>
         </svg>
         <div class="circle-content">
           <div class="circle-number" id="seconds">0</div>
@@ -811,7 +829,7 @@
   </section>
 
   <!-- UPLOAD -->
-  <section class="section upload-section">
+  <section class="section upload-section reveal">
     <div class="divider">
       <div class="divider-line"></div>
       <div class="divider-symbol">❦</div>
@@ -847,8 +865,20 @@
     </a>
   </section>
 
+  <!-- MESSAGE -->
+  <section class="section reveal">
+    <div class="message-box" id="messageBox">
+      <div class="message-text">
+        Your presence and blessings would mean the world to us<br>
+        as we celebrate this beautiful new beginning.<br>
+        We would be honoured to have you join us on our special day.<br><br>
+        — With love, Gokul & Bharathi
+      </div>
+    </div>
+  </section>
+
   <!-- DETAILS -->
-  <section class="section">
+  <section class="section reveal">
     <div class="divider">
       <div class="divider-line"></div>
       <div class="divider-symbol">❦</div>
@@ -928,6 +958,19 @@
       circle.style.strokeDashoffset = offset;
     }
 
+    function moveHeart(heartId, value, max){
+      const heart = document.getElementById(heartId);
+      const angle = (value / max) * 360 - 90;
+      const radius = 54;
+      const center = 65;
+
+      const x = center + radius * Math.cos(angle * Math.PI / 180);
+      const y = center + radius * Math.sin(angle * Math.PI / 180);
+
+      heart.style.left = x + "px";
+      heart.style.top = y + "px";
+    }
+
     function updateCountdown(){
       const now = new Date().getTime();
       let diff = endDate - now;
@@ -947,22 +990,37 @@
       setCircle("hoursCircle", hours, 24);
       setCircle("minutesCircle", minutes, 60);
       setCircle("secondsCircle", seconds, 60);
+
+      moveHeart("daysHeart", days, 365);
+      moveHeart("hoursHeart", hours, 24);
+      moveHeart("minutesHeart", minutes, 60);
+      moveHeart("secondsHeart", seconds, 60);
     }
 
-    setInterval(updateCountdown,1000);
+    setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // MESSAGE BOX SCROLL ZOOM
+    // MESSAGE BOX + SCROLL REVEAL
     const box = document.getElementById("messageBox");
+    const reveals = document.querySelectorAll(".reveal");
 
-    window.addEventListener("scroll", () => {
+    function revealOnScroll(){
+      reveals.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 100){
+          el.classList.add("show");
+        }
+      });
+
       const rect = box.getBoundingClientRect();
       const trigger = window.innerHeight * 0.75;
-
       if(rect.top < trigger){
         box.classList.add("active");
       }
-    });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
 
     // PHOTO PREVIEW THEN GOOGLE PHOTOS
     const photoUpload = document.getElementById("photoUpload");
