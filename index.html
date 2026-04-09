@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -330,9 +329,6 @@
       color:#7b5b67;
     }
 
-    /* =========================
-       COUNTDOWN — FIXED DOT
-    ========================== */
     .countdown-wrap{
       display:flex;
       justify-content:center;
@@ -350,7 +346,6 @@
       justify-content:center;
     }
 
-    /* SVG sits behind everything */
     .circle-box svg{
       width:122px;
       height:122px;
@@ -376,7 +371,6 @@
       transition:stroke-dashoffset 1s linear;
     }
 
-    /* The dot — positioned via JS using transform:translate so it sits exactly on the arc tip */
     .moving-dot{
       position:absolute;
       width:11px;
@@ -388,7 +382,6 @@
         0 0 8px rgba(215,119,149,0.45);
       z-index:5;
       pointer-events:none;
-      /* JS sets left/top to the arc coords; translate(-50%,-50%) keeps it centred on that point */
       transform:translate(-50%, -50%);
     }
 
@@ -420,9 +413,6 @@
       line-height:1.2;
     }
 
-    /* =========================
-       UPLOAD
-    ========================== */
     .upload-section{
       max-width:820px;
       margin:0 auto;
@@ -520,9 +510,6 @@
       line-height:1.7;
     }
 
-    /* =========================
-       DETAILS
-    ========================== */
     .card-grid{
       display:flex;
       justify-content:center;
@@ -552,6 +539,12 @@
       color:#7b5b67;
       line-height:1.75;
       font-size:16px;
+    }
+
+    .card strong{
+      color:#c75d7c;
+      font-weight:600;
+      font-size:17px;
     }
 
     .btn{
@@ -584,9 +577,6 @@
       cursor:pointer;
     }
 
-    /* =========================
-       FOOTER — ELEGANT REDESIGN
-    ========================== */
     .footer{
       padding:48px 16px 56px;
       color:#a07786;
@@ -622,7 +612,6 @@
       opacity:0.8;
     }
 
-    /* Monogram — elegant interlocked initials */
     .footer-monogram{
       font-family:'Great Vibes', cursive;
       font-size:72px;
@@ -697,12 +686,10 @@
       .countdown-wrap{ gap:8px; }
     }
   </style>
-
 </head>
 <body>
 
   <!-- INTRO -->
-
   <div class="intro-loader" id="introLoader">
     <div class="ice-name intro-glow-name">
       <span>Gokul</span>
@@ -711,19 +698,15 @@
     </div>
     <div class="ice-sub">A Beautiful Beginning</div>
 
-```
-<div class="triple-loader">
-  <div class="ring ring1"></div>
-  <div class="ring ring2"></div>
-  <div class="ring ring3"></div>
-  <div class="center-heart"></div>
-</div>
-```
-
+    <div class="triple-loader">
+      <div class="ring ring1"></div>
+      <div class="ring ring2"></div>
+      <div class="ring ring3"></div>
+      <div class="center-heart"></div>
+    </div>
   </div>
 
   <!-- PETALS -->
-
   <div class="flowers">
     <div class="petal">🌸</div>
     <div class="petal">🌸</div>
@@ -740,14 +723,12 @@
   <div class="blob three"></div>
 
   <!-- MUSIC -->
-
-<button class="music-btn" onclick="toggleMusic()">🎵</button>
-<audio id="bgMusic" loop playsinline preload="auto">
-<source src="./Song.mp3" type="audio/mpeg">
-</audio>
+  <button class="music-btn" onclick="toggleMusic()">🎵</button>
+  <audio id="bgMusic" loop playsinline preload="auto">
+    <source src="./Song.mp3" type="audio/mpeg">
+  </audio>
 
   <!-- HERO -->
-
   <section class="section hero">
     <div class="hero-box">
       <div class="divider">
@@ -756,26 +737,22 @@
         <div class="divider-line"></div>
       </div>
 
-```
-  <div class="small-title">Wedding Invitation</div>
+      <div class="small-title">Wedding Invitation</div>
 
-  <div class="main-script hero-glow-name">
-    <span>Gokul</span>
-    <span class="amp">&</span>
-    <span>Bharathi</span>
-  </div>
+      <div class="main-script hero-glow-name">
+        <span>Gokul</span>
+        <span class="amp">&</span>
+        <span>Bharathi</span>
+      </div>
 
-  <div class="sub-text">
-    With the blessings of our families, we joyfully invite you to celebrate
-    our wedding and bless us as we begin our beautiful journey together.
-  </div>
-</div>
-```
-
+      <div class="sub-text">
+        With the blessings of our families, we joyfully invite you to celebrate
+        our wedding and bless us as we begin our beautiful journey together.
+      </div>
+    </div>
   </section>
 
   <!-- COUNTDOWN -->
-
   <section class="section reveal">
     <div class="divider">
       <div class="divider-line"></div>
@@ -783,72 +760,83 @@
       <div class="divider-line"></div>
     </div>
 
-```
-<div class="small-title">Save The Date</div>
-<div class="sub-text" style="font-size:26px; margin-bottom:6px;">
-  21st November 2026
-</div>
-<div class="small-title">Countdown To Forever</div>
-
-<div class="countdown-wrap">
-  <!-- Days -->
-  <div class="circle-box" id="boxDays">
-    <div class="moving-dot" id="dotDays"></div>
-    <svg viewBox="0 0 122 122">
-      <circle class="circle-bg" cx="61" cy="61" r="52"></circle>
-      <circle class="circle-progress" id="daysCircle" cx="61" cy="61" r="52"></circle>
-    </svg>
-    <div class="circle-content">
-      <div class="circle-number" id="days">0</div>
-      <div class="circle-label">Days</div>
+    <div class="small-title">Save The Date</div>
+    <div class="sub-text" style="font-size:26px; margin-bottom:6px;">
+      21st November 2026
     </div>
-  </div>
+    <div class="small-title">Countdown To Forever</div>
 
-  <!-- Hours -->
-  <div class="circle-box" id="boxHours">
-    <div class="moving-dot" id="dotHours"></div>
-    <svg viewBox="0 0 122 122">
-      <circle class="circle-bg" cx="61" cy="61" r="52"></circle>
-      <circle class="circle-progress" id="hoursCircle" cx="61" cy="61" r="52"></circle>
-    </svg>
-    <div class="circle-content">
-      <div class="circle-number" id="hours">0</div>
-      <div class="circle-label">Hours</div>
+    <div class="countdown-wrap">
+      <div class="circle-box" id="boxDays">
+        <div class="moving-dot" id="dotDays"></div>
+        <svg viewBox="0 0 122 122">
+          <circle class="circle-bg" cx="61" cy="61" r="52"></circle>
+          <circle class="circle-progress" id="daysCircle" cx="61" cy="61" r="52"></circle>
+        </svg>
+        <div class="circle-content">
+          <div class="circle-number" id="days">0</div>
+          <div class="circle-label">Days</div>
+        </div>
+      </div>
+
+      <div class="circle-box" id="boxHours">
+        <div class="moving-dot" id="dotHours"></div>
+        <svg viewBox="0 0 122 122">
+          <circle class="circle-bg" cx="61" cy="61" r="52"></circle>
+          <circle class="circle-progress" id="hoursCircle" cx="61" cy="61" r="52"></circle>
+        </svg>
+        <div class="circle-content">
+          <div class="circle-number" id="hours">0</div>
+          <div class="circle-label">Hours</div>
+        </div>
+      </div>
+
+      <div class="circle-box" id="boxMinutes">
+        <div class="moving-dot" id="dotMinutes"></div>
+        <svg viewBox="0 0 122 122">
+          <circle class="circle-bg" cx="61" cy="61" r="52"></circle>
+          <circle class="circle-progress" id="minutesCircle" cx="61" cy="61" r="52"></circle>
+        </svg>
+        <div class="circle-content">
+          <div class="circle-number" id="minutes">0</div>
+          <div class="circle-label">Minutes</div>
+        </div>
+      </div>
+
+      <div class="circle-box" id="boxSeconds">
+        <div class="moving-dot" id="dotSeconds"></div>
+        <svg viewBox="0 0 122 122">
+          <circle class="circle-bg" cx="61" cy="61" r="52"></circle>
+          <circle class="circle-progress" id="secondsCircle" cx="61" cy="61" r="52"></circle>
+        </svg>
+        <div class="circle-content">
+          <div class="circle-number" id="seconds">0</div>
+          <div class="circle-label">Seconds</div>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <!-- Minutes -->
-  <div class="circle-box" id="boxMinutes">
-    <div class="moving-dot" id="dotMinutes"></div>
-    <svg viewBox="0 0 122 122">
-      <circle class="circle-bg" cx="61" cy="61" r="52"></circle>
-      <circle class="circle-progress" id="minutesCircle" cx="61" cy="61" r="52"></circle>
-    </svg>
-    <div class="circle-content">
-      <div class="circle-number" id="minutes">0</div>
-      <div class="circle-label">Minutes</div>
-    </div>
-  </div>
-
-  <!-- Seconds -->
-  <div class="circle-box" id="boxSeconds">
-    <div class="moving-dot" id="dotSeconds"></div>
-    <svg viewBox="0 0 122 122">
-      <circle class="circle-bg" cx="61" cy="61" r="52"></circle>
-      <circle class="circle-progress" id="secondsCircle" cx="61" cy="61" r="52"></circle>
-    </svg>
-    <div class="circle-content">
-      <div class="circle-number" id="seconds">0</div>
-      <div class="circle-label">Seconds</div>
-    </div>
-  </div>
-</div>
-```
-
   </section>
 
-  <!-- UPLOAD -->
+  <!-- WEDDING DETAILS (VENUE ONLY) -->
+  <section class="section reveal">
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-symbol">❦</div>
+      <div class="divider-line"></div>
+    </div>
 
+    <div class="small-title">Wedding Details</div>
+
+    <div class="card-grid" style="justify-content:center;">
+      <div class="card">
+        <h3>Venue</h3>
+        <p>Kulandhai Velayudasamy Seva Sanga<br>Thirumana Mandapam</p>
+        <a class="btn" href="https://maps.app.goo.gl/gh4hvVGi5xa8dMxw8?g_st=ic" target="_blank">Open Map</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO UPLOAD -->
   <section class="section upload-section reveal">
     <div class="divider">
       <div class="divider-line"></div>
@@ -856,40 +844,59 @@
       <div class="divider-line"></div>
     </div>
 
-```
-<div class="small-title">Captured Moments</div>
-<div class="sub-text" style="max-width:760px;font-size:26px;font-style:italic;">
-  Freeze the magic, frame the memories — every moment deserves to last forever
-</div>
+    <div class="small-title">Captured Moments</div>
+    <div class="sub-text" style="max-width:760px;font-size:26px;font-style:italic;">
+      Freeze the magic, frame the memories — every moment deserves to last forever
+    </div>
 
-<div class="upload-circle-wrap">
-  <label for="photoUpload" class="upload-circle">
-    <div class="upload-icon">📷</div>
-    <div class="upload-text">Select Photo</div>
-  </label>
-  <input type="file" id="photoUpload" accept="image/*" hidden>
-</div>
+    <div class="upload-circle-wrap">
+      <label for="photoUpload" class="upload-circle">
+        <div class="upload-icon">📷</div>
+        <div class="upload-text">Select Photo</div>
+      </label>
+      <input type="file" id="photoUpload" accept="image/*" hidden>
+    </div>
 
-<img id="previewImage" alt="Preview">
+    <img id="previewImage" alt="Preview">
 
-<div class="upload-heading">Capture & Share the Magic</div>
-<div class="upload-desc">
-  Select your favorite moment here and then continue to upload it to our shared wedding album.
-</div>
+    <div class="upload-heading">Capture & Share the Magic</div>
+    <div class="upload-desc">
+      Select your favorite moment here and then continue to upload it to our shared wedding album.
+    </div>
 
-<div class="upload-note" id="uploadNote">
-  Choose a photo first 💗
-</div>
+    <div class="upload-note" id="uploadNote">
+      Choose a photo first 💗
+    </div>
 
-<a id="uploadBtn" href="https://photos.app.goo.gl/a9eJXpcDNMeJuPK4A" target="_blank" class="btn" style="display:none;">
-  Continue to Upload
-</a>
-```
+    <a id="uploadBtn" href="https://photos.app.goo.gl/a9eJXpcDNMeJuPK4A" target="_blank" class="btn" style="display:none;">
+      Continue to Upload
+    </a>
+  </section>
 
+  <!-- EVENT SCHEDULE -->
+  <section class="section reveal">
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-symbol">❦</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="small-title">Event Schedule</div>
+
+    <div class="card-grid" style="justify-content:center;">
+      <div class="card">
+        <h3>Reception</h3>
+        <p>21st November 2026<br>6:00 PM</p>
+      </div>
+
+      <div class="card">
+        <h3>Muhurtham</h3>
+        <p>22nd November 2026<br>5:00 AM to 6:00 AM</p>
+      </div>
+    </div>
   </section>
 
   <!-- MESSAGE -->
-
   <section class="section reveal">
     <div class="message-box" id="messageBox">
       <div class="message-text">
@@ -901,42 +908,7 @@
     </div>
   </section>
 
-  <!-- DETAILS -->
-
-  <section class="section reveal">
-    <div class="divider">
-      <div class="divider-line"></div>
-      <div class="divider-symbol">❦</div>
-      <div class="divider-line"></div>
-    </div>
-
-```
-<div class="small-title">Wedding Details</div>
-
-<div class="card-grid">
-  <div class="card">
-    <h3>Date</h3>
-    <p>21st November 2026<br>Wedding Ceremony</p>
-  </div>
-
-  <div class="card">
-    <h3>Venue</h3>
-    <p>Kulandhai Velayudasamy Seva Sanga<br>Thirumana Mandapam</p>
-    <a class="btn" href="https://maps.app.goo.gl/gh4hvVGi5xa8dMxw8?g_st=ic" target="_blank">Open Map</a>
-  </div>
-
-  <div class="card">
-    <h3>RSVP</h3>
-    <p>We would be happy to celebrate this special day with you.</p>
-    <a class="btn" href="https://wa.me/919894303659" target="_blank">WhatsApp</a>
-  </div>
-</div>
-```
-
-  </section>
-
-  <!-- FOOTER — ELEGANT -->
-
+  <!-- FOOTER -->
   <div class="footer">
     <div class="footer-divider">
       <div class="footer-divider-line"></div>
@@ -944,12 +916,9 @@
       <div class="footer-divider-line"></div>
     </div>
 
-```
-<div class="footer-monogram">G &amp; B</div>
-<div class="footer-names">Gokul &nbsp;·&nbsp; Bharathi</div>
-<div class="footer-hashtag">#gokulwedsbharathi</div>
-```
-
+    <div class="footer-monogram">G &amp; B</div>
+    <div class="footer-names">Gokul &nbsp;·&nbsp; Bharathi</div>
+    <div class="footer-hashtag">#gokulwedsbharathi</div>
   </div>
 
   <script>
@@ -981,13 +950,8 @@
       document.removeEventListener("click", autoPlayOnce);
     });
 
-    // =============================================
-    //  COUNTDOWN  — dot sits exactly on arc tip
-    // =============================================
+    // COUNTDOWN
     const endDate = new Date(2026, 10, 21, 0, 0, 0).getTime();
-
-    // SVG viewBox is 122×122, circle centre = (61,61), radius = 52
-    // The element rendered size may differ from 122px, so we scale.
     const SVG_SIZE   = 122;
     const SVG_CENTER = 61;
     const SVG_RADIUS = 52;
@@ -999,65 +963,54 @@
       circle.style.strokeDashoffset = circumference - (value / max) * circumference;
     }
 
-    /**
-     * Place the dot at the leading edge (tip) of the progress arc.
-     * The SVG is rotated -90° in CSS so 0% starts at the top.
-     * Angle 0 → top  (i.e. -90° in standard coords → we add -90° offset).
-     */
     function moveDot(dotId, boxId, value, max) {
       const dot = document.getElementById(dotId);
       const box = document.getElementById(boxId);
 
-      // Fraction of the arc that is filled
       const fraction = value / max;
-
-      // Angle in radians: start at top (-π/2), go clockwise
       const angle = (fraction * 2 * Math.PI) - (Math.PI / 2);
 
-      // Position on the SVG coordinate space
       const svgX = SVG_CENTER + SVG_RADIUS * Math.cos(angle);
       const svgY = SVG_CENTER + SVG_RADIUS * Math.sin(angle);
 
-      // Scale factor: rendered pixel size / SVG viewBox size
       const rendered = box.offsetWidth || SVG_SIZE;
-      const scale    = rendered / SVG_SIZE;
+      const scale = rendered / SVG_SIZE;
 
-      // Apply as left/top (the CSS keeps transform:translate(-50%,-50%))
       dot.style.left = (svgX * scale) + "px";
       dot.style.top  = (svgY * scale) + "px";
     }
 
     function updateCountdown() {
-      const now  = Date.now();
-      let diff   = endDate - now;
+      const now = Date.now();
+      let diff = endDate - now;
       if (diff < 0) diff = 0;
 
-      const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours   = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
 
-      document.getElementById("days").textContent    = days;
-      document.getElementById("hours").textContent   = hours;
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
       document.getElementById("minutes").textContent = minutes;
       document.getElementById("seconds").textContent = seconds;
 
-      setCircle("daysCircle",    days % 365, 365);
-      setCircle("hoursCircle",   hours,      24);
-      setCircle("minutesCircle", minutes,    60);
-      setCircle("secondsCircle", seconds,    60);
+      setCircle("daysCircle", days % 365, 365);
+      setCircle("hoursCircle", hours, 24);
+      setCircle("minutesCircle", minutes, 60);
+      setCircle("secondsCircle", seconds, 60);
 
-      moveDot("dotDays",    "boxDays",    days % 365, 365);
-      moveDot("dotHours",   "boxHours",   hours,      24);
-      moveDot("dotMinutes", "boxMinutes", minutes,    60);
-      moveDot("dotSeconds", "boxSeconds", seconds,    60);
+      moveDot("dotDays", "boxDays", days % 365, 365);
+      moveDot("dotHours", "boxHours", hours, 24);
+      moveDot("dotMinutes", "boxMinutes", minutes, 60);
+      moveDot("dotSeconds", "boxSeconds", seconds, 60);
     }
 
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
     // SCROLL REVEAL
-    const box     = document.getElementById("messageBox");
+    const box = document.getElementById("messageBox");
     const reveals = document.querySelectorAll(".reveal");
 
     function revealOnScroll() {
@@ -1065,22 +1018,24 @@
         if (el.getBoundingClientRect().top < window.innerHeight - 80)
           el.classList.add("show");
       });
+
       if (box.getBoundingClientRect().top < window.innerHeight * 0.75)
         box.classList.add("active");
     }
 
     window.addEventListener("scroll", revealOnScroll);
-    window.addEventListener("load",   revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
 
     // PHOTO PREVIEW
     const photoUpload = document.getElementById("photoUpload");
     const previewImage = document.getElementById("previewImage");
-    const uploadBtn    = document.getElementById("uploadBtn");
-    const uploadNote   = document.getElementById("uploadNote");
+    const uploadBtn = document.getElementById("uploadBtn");
+    const uploadNote = document.getElementById("uploadNote");
 
     photoUpload.addEventListener("change", function () {
       const file = this.files[0];
       if (!file) return;
+
       const reader = new FileReader();
       reader.onload = e => {
         previewImage.src = e.target.result;
@@ -1091,6 +1046,5 @@
       reader.readAsDataURL(file);
     });
   </script>
-
 </body>
 </html>
