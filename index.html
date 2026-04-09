@@ -1,577 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gokul ❤️ Bharathi | Wedding Invitation</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Gokul ❤️ Bharathi</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(180deg, #fff9f7, #fdf1ed, #fffaf8);
-      color: #4b2e2e;
-      overflow-x: hidden;
-      position: relative;
-    }
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at top left, rgba(255,220,220,0.35), transparent 40%),
-                  radial-gradient(circle at bottom right, rgba(255,210,230,0.28), transparent 40%);
-      z-index: -1;
-    }
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(180deg,#fff9f7,#fdeee7);
+  overflow-x:hidden;
+}
 
-    /* INTRO */
-    .intro-screen {
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,245,245,0.97), rgba(252,230,236,0.95)),
-                  url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      z-index: 9999;
-      padding: 20px;
-      transition: opacity 1.2s ease, visibility 1.2s ease;
-    }
+/* INTRO */
+.intro{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#fff0f3,#fde7ea);
+  z-index:9999;
+  transition:1.2s;
+}
+.intro.hide{opacity:0;visibility:hidden}
 
-    .intro-screen.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
+.intro h1{
+  font-family:'Great Vibes';
+  font-size:70px;
+  color:#a83f63;
+  animation:zoom 2s ease;
+}
 
-    .intro-box {
-      background: rgba(255,255,255,0.18);
-      backdrop-filter: blur(12px);
-      padding: 45px 35px;
-      border-radius: 28px;
-      border: 1px solid rgba(255,255,255,0.35);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
-      animation: fadeInUp 1.8s ease;
-      max-width: 500px;
-      width: 100%;
-    }
+@keyframes zoom{
+  from{transform:scale(0.6);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
 
-    .intro-box h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 76px;
-      color: #a83f63;
-      margin-bottom: 12px;
-      text-shadow: 0 4px 15px rgba(255,255,255,0.5);
-    }
+/* PARTICLES */
+.particle{
+  position:fixed;
+  font-size:18px;
+  animation:fall linear infinite;
+  opacity:0.6;
+}
 
-    .intro-box p {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
-      color: #6d4c41;
-      letter-spacing: 1px;
-    }
+@keyframes fall{
+  from{transform:translateY(-10vh)}
+  to{transform:translateY(110vh)}
+}
 
-    .loading-text {
-      margin-top: 22px;
-      font-size: 13px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #a05252;
-    }
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
 
-    /* MUSIC BUTTON */
-    .music-btn {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      background: linear-gradient(135deg, #a83f63, #d97092);
-      color: #fff;
-      border: none;
-      border-radius: 999px;
-      padding: 14px 18px;
-      cursor: pointer;
-      font-size: 15px;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.2);
-      z-index: 1000;
-    }
+.box{
+  background:rgba(255,255,255,0.4);
+  backdrop-filter:blur(15px);
+  padding:40px;
+  border-radius:30px;
+  animation:fadeUp 1.5s ease;
+}
 
-    /* PETALS */
-    .petal {
-      position: fixed;
-      top: -20px;
-      font-size: 18px;
-      animation: fall linear infinite;
-      z-index: 0;
-      opacity: 0.6;
-      pointer-events: none;
-    }
+h1{
+  font-family:'Great Vibes';
+  font-size:80px;
+  color:#a83f63;
+}
 
-    @keyframes fall {
-      0% { transform: translateY(-20px) rotate(0deg); }
-      100% { transform: translateY(110vh) rotate(360deg); }
-    }
+.sub{
+  font-family:'Cormorant Garamond';
+  font-size:26px;
+}
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 40px 20px;
-      background:
-        linear-gradient(rgba(255, 250, 248, 0.55), rgba(255, 250, 248, 0.7)),
-        url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-      position: relative;
-      z-index: 1;
-    }
+/* FLOAT */
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+  100%{transform:translateY(0)}
+}
 
-    .hero-content {
-      max-width: 900px;
-      background: rgba(255,255,255,0.18);
-      backdrop-filter: blur(10px);
-      padding: 45px 28px;
-      border-radius: 32px;
-      border: 1px solid rgba(255,255,255,0.35);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-      animation: fadeInUp 1.6s ease;
-    }
+/* COUNTDOWN */
+.countdown{
+  display:flex;
+  gap:15px;
+  justify-content:center;
+  margin-top:30px;
+  flex-wrap:wrap;
+}
 
-    .tag {
-      font-family: 'Cormorant Garamond', serif;
-      letter-spacing: 4px;
-      font-size: 16px;
-      text-transform: uppercase;
-      color: #8c5b5b;
-      margin-bottom: 16px;
-    }
+.time{
+  width:90px;
+  padding:20px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.5);
+  backdrop-filter:blur(10px);
+  animation:float 4s infinite;
+}
 
-    h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 92px;
-      color: #a83f63;
-      line-height: 1.08;
-      margin-bottom: 12px;
-      text-shadow: 0 5px 18px rgba(255,255,255,0.45);
-    }
+.time h2{
+  font-size:32px;
+  color:#a83f63;
+}
 
-    .sub-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
-      margin: 20px auto;
-      max-width: 760px;
-      line-height: 1.8;
-      color: #6d4c41;
-    }
+/* UPLOAD */
+.upload{
+  margin:80px auto;
+  max-width:320px;
+  padding:25px;
+  border-radius:25px;
+  background:rgba(255,255,255,0.5);
+  backdrop-filter:blur(10px);
+  text-align:center;
+  animation:float 5s infinite;
+}
 
-    .date-box {
-      display: inline-block;
-      margin-top: 24px;
-      padding: 16px 30px;
-      background: rgba(255,255,255,0.75);
-      border: 1px solid rgba(255,255,255,0.6);
-      border-radius: 999px;
-      font-size: 20px;
-      font-weight: 600;
-      color: #8b2e4f;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-    }
+.upload label{
+  display:block;
+  padding:25px;
+  border:2px dashed #e0bcbc;
+  border-radius:15px;
+  cursor:pointer;
+}
 
-    /* GENERAL SECTIONS */
-    .section {
-      padding: 90px 20px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
+#photo{display:none}
 
-    .section h2 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 62px;
-      color: #a83f63;
-      margin-bottom: 18px;
-    }
+#preview{
+  width:100%;
+  margin-top:15px;
+  border-radius:15px;
+}
 
-    .section p {
-      max-width: 860px;
-      margin: auto;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
-      line-height: 1.9;
-      color: #6d4c41;
-    }
+/* SCROLL */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
+}
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
 
-    .quote {
-      font-size: 30px;
-      font-style: italic;
-      color: #8b5a5a;
-      margin-top: 30px;
-      font-family: 'Cormorant Garamond', serif;
-    }
+/* MUSIC */
+.music{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#a83f63;
+  color:#fff;
+  border:none;
+  padding:12px;
+  border-radius:50%;
+}
 
-    /* GLASS CARD */
-    .glass-card {
-      background: rgba(255,255,255,0.55);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.35);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-    }
-
-    /* UPLOAD */
-    .upload-card {
-      max-width: 380px;
-      margin: 35px auto 0;
-      padding: 28px;
-      border-radius: 28px;
-    }
-
-    .upload-area {
-      display: block;
-      padding: 34px;
-      border: 2px dashed #e2bcbc;
-      border-radius: 22px;
-      text-align: center;
-      cursor: pointer;
-      color: #a83f63;
-      font-weight: 600;
-      transition: 0.3s;
-      background: rgba(255,255,255,0.35);
-    }
-
-    .upload-area:hover {
-      background: rgba(255,240,243,0.6);
-    }
-
-    #photoUpload {
-      display: none;
-    }
-
-    #wishText {
-      width: 100%;
-      margin-top: 18px;
-      padding: 14px;
-      border-radius: 16px;
-      border: 1px solid #e7d0d0;
-      font-size: 15px;
-      font-family: 'Poppins', sans-serif;
-      background: rgba(255,255,255,0.7);
-      outline: none;
-    }
-
-    #previewImage {
-      display: none;
-      width: 100%;
-      margin-top: 18px;
-      border-radius: 20px;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.12);
-    }
-
-    /* COUNTDOWN */
-    .countdown {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 40px;
-    }
-
-    .time-box {
-      width: 115px;
-      padding: 26px 18px;
-      border-radius: 28px;
-    }
-
-    .time-box h3 {
-      font-size: 40px;
-      color: #a83f63;
-      margin-bottom: 8px;
-    }
-
-    .time-box span {
-      font-size: 14px;
-      color: #7b5b5b;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    /* DETAILS */
-    .card-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 28px;
-      margin-top: 45px;
-    }
-
-    .card {
-      padding: 34px 28px;
-      width: 340px;
-      border-radius: 30px;
-      transition: transform 0.35s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-    }
-
-    .card h3 {
-      font-size: 28px;
-      color: #a83f63;
-      margin-bottom: 16px;
-      font-family: 'Cormorant Garamond', serif;
-    }
-
-    .card p {
-      font-size: 22px;
-      line-height: 1.9;
-      color: #6d4c41;
-      font-family: 'Cormorant Garamond', serif;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 22px;
-      padding: 14px 30px;
-      background: linear-gradient(135deg, #a83f63, #d97092);
-      color: white;
-      text-decoration: none;
-      border-radius: 999px;
-      font-weight: 600;
-      box-shadow: 0 12px 25px rgba(168, 63, 99, 0.25);
-      transition: transform 0.3s ease;
-    }
-
-    .btn:hover {
-      transform: scale(1.06);
-    }
-
-    .footer {
-      text-align: center;
-      padding: 40px 20px 50px;
-      color: #7a5c5c;
-      font-size: 16px;
-      position: relative;
-      z-index: 1;
-      font-family: 'Cormorant Garamond', serif;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(35px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .intro-box h1 { font-size: 56px; }
-      h1 { font-size: 64px; }
-      .sub-text { font-size: 22px; }
-      .section h2 { font-size: 48px; }
-      .section p { font-size: 22px; }
-      .time-box {
-        width: 95px;
-        padding: 20px 12px;
-      }
-      .time-box h3 { font-size: 32px; }
-      .card {
-        width: 100%;
-        max-width: 350px;
-      }
-    }
-  </style>
+/* SHARE */
+.share{
+  display:block;
+  margin:40px auto;
+  padding:12px 25px;
+  background:#25D366;
+  color:white;
+  text-align:center;
+  border-radius:30px;
+  width:200px;
+}
+</style>
 </head>
+
 <body>
 
-  <div class="intro-screen" id="introScreen">
-    <div class="intro-box">
-      <h1>Gokul & Bharathi</h1>
-      <p>Wedding Invitation</p>
-      <div class="loading-text">A Beautiful Beginning</div>
-    </div>
-  </div>
+<!-- INTRO -->
+<div class="intro" id="intro">
+  <h1>Gokul & Bharathi</h1>
+</div>
 
-  <button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
+<!-- MUSIC -->
+<button class="music" onclick="toggleMusic()">🎵</button>
+<audio id="song" loop>
+  <source src="Song.mp3">
+</audio>
 
-  <audio id="bgMusic" loop playsinline preload="auto">
-    <source src="./Song.mp3" type="audio/mpeg">
-  </audio>
+<!-- PARTICLES -->
+<script>
+for(let i=0;i<20;i++){
+  let p=document.createElement("div")
+  p.className="particle"
+  p.innerHTML="🌸"
+  p.style.left=Math.random()*100+"%"
+  p.style.animationDuration=(5+Math.random()*5)+"s"
+  document.body.appendChild(p)
+}
+</script>
 
-  <div class="petal" style="left: 5%; animation-duration: 10s;">🌸</div>
-  <div class="petal" style="left: 15%; animation-duration: 12s;">🌸</div>
-  <div class="petal" style="left: 25%; animation-duration: 9s;">🌸</div>
-  <div class="petal" style="left: 35%; animation-duration: 14s;">🌸</div>
-  <div class="petal" style="left: 45%; animation-duration: 11s;">🌸</div>
-  <div class="petal" style="left: 55%; animation-duration: 13s;">🌸</div>
-  <div class="petal" style="left: 65%; animation-duration: 10s;">🌸</div>
-  <div class="petal" style="left: 75%; animation-duration: 15s;">🌸</div>
-  <div class="petal" style="left: 85%; animation-duration: 12s;">🌸</div>
-  <div class="petal" style="left: 95%; animation-duration: 9s;">🌸</div>
+<!-- HERO -->
+<section class="hero">
+<div class="box reveal">
+<h1>Gokul ❤️ Bharathi</h1>
+<p class="sub">We invite you to celebrate our wedding</p>
 
-  <section class="hero">
-    <div class="hero-content">
-      <div class="tag">Wedding Invitation</div>
-      <h1>Gokul <br> & <br> Bharathi</h1>
-      <p class="sub-text">
-        With the blessings of our families, we joyfully invite you to be a part of our wedding celebration and bless us as we begin our beautiful journey together.
-      </p>
-      <div class="date-box">📅 21st November 2026</div>
-    </div>
-  </section>
+<div class="countdown">
+<div class="time"><h2 id="d"></h2>Days</div>
+<div class="time"><h2 id="h"></h2>Hrs</div>
+<div class="time"><h2 id="m"></h2>Min</div>
+<div class="time"><h2 id="s"></h2>Sec</div>
+</div>
+</div>
+</section>
 
-  <section class="section">
-    <h2>Our Special Day</h2>
-    <p>
-      Two hearts, two families, one beautiful beginning. Your presence on our special day will make our celebration even more memorable and meaningful.
-    </p>
-    <div class="quote">“Together is a beautiful place to be.”</div>
-  </section>
+<!-- UPLOAD -->
+<div class="upload reveal">
+<label for="photo">📸 Upload Your Photo</label>
+<input type="file" id="photo">
+<img id="preview">
+</div>
 
-  <section class="section">
-    <h2>Share Your Wishes 📸</h2>
-    <p>Upload your photo and leave a message for us ❤️</p>
+<!-- SHARE -->
+<a class="share" href="https://wa.me/?text=Join%20our%20wedding%20celebration!%20https://gokulbharathi21.github.io/Gokul-Bharathi-invite/" target="_blank">
+Share Invite 💌
+</a>
 
-    <div class="upload-card glass-card">
-      <label for="photoUpload" class="upload-area">
-        <span>📸 Tap to Upload Photo</span>
-      </label>
+<script>
+// INTRO
+setTimeout(()=>{intro.classList.add("hide")},3000)
 
-      <input type="file" id="photoUpload" accept="image/*">
-      <textarea id="wishText" placeholder="Write your wishes..." rows="3"></textarea>
-      <img id="previewImage" alt="Preview">
-    </div>
-  </section>
+// COUNTDOWN
+const target=new Date(2026,10,21).getTime()
+setInterval(()=>{
+let now=new Date().getTime()
+let diff=target-now
+d.innerText=Math.floor(diff/(1000*60*60*24))
+h.innerText=Math.floor(diff/(1000*60*60)%24)
+m.innerText=Math.floor(diff/(1000*60)%60)
+s.innerText=Math.floor(diff/1000%60)
+},1000)
 
-  <section class="section">
-    <h2>Countdown to Forever</h2>
-    <div class="countdown" id="countdown">
-      <div class="time-box glass-card"><h3 id="days">0</h3><span>Days</span></div>
-      <div class="time-box glass-card"><h3 id="hours">0</h3><span>Hours</span></div>
-      <div class="time-box glass-card"><h3 id="minutes">0</h3><span>Minutes</span></div>
-      <div class="time-box glass-card"><h3 id="seconds">0</h3><span>Seconds</span></div>
-    </div>
-  </section>
+// UPLOAD
+photo.onchange=e=>{
+let r=new FileReader()
+r.onload=()=>preview.src=r.result
+r.readAsDataURL(e.target.files[0])
+}
 
-  <section class="section">
-    <h2>Wedding Details</h2>
-    <div class="card-container">
-      <div class="card glass-card">
-        <h3>📅 Date</h3>
-        <p>21st November 2026<br>Wedding Ceremony</p>
-      </div>
+// SCROLL
+window.addEventListener("scroll",()=>{
+document.querySelectorAll(".reveal").forEach(el=>{
+if(el.getBoundingClientRect().top<window.innerHeight-50)
+el.classList.add("active")
+})
+})
 
-      <div class="card glass-card">
-        <h3>📍 Venue</h3>
-        <p>Kulandhai Velayudasamy Seva Sanga<br>Thirumana Mandapam</p>
-        <a href="https://maps.app.goo.gl/gh4hvVGi5xa8dMxw8?g_st=ic" target="_blank" class="btn">Open Map</a>
-      </div>
+// MUSIC
+let play=false
+function toggleMusic(){
+if(play){song.pause()}else{song.play()}
+play=!play
+}
 
-      <div class="card glass-card">
-        <h3>📱 RSVP</h3>
-        <p>We would be happy to celebrate this special day with you.</p>
-        <a href="https://wa.me/919894303659" target="_blank" class="btn">RSVP on WhatsApp</a>
-      </div>
-    </div>
-  </section>
-
-  <div class="footer">
-    Made with ❤️ for Gokul & Bharathi <br>
-    We look forward to celebrating with you.
-  </div>
-
-  <script>
-    const music = document.getElementById("bgMusic");
-    let isPlaying = false;
-
-    setTimeout(() => {
-      document.getElementById("introScreen").classList.add("hide");
-    }, 3500);
-
-    document.addEventListener("click", function startMusicOnce() {
-      if (!isPlaying) {
-        music.volume = 0.5;
-        music.play().then(() => {
-          isPlaying = true;
-        }).catch((err) => {
-          console.log("Music blocked:", err);
-        });
-      }
-      document.removeEventListener("click", startMusicOnce);
-    });
-
-    function toggleMusic() {
-      if (isPlaying) {
-        music.pause();
-        isPlaying = false;
-      } else {
-        music.play().then(() => {
-          isPlaying = true;
-        }).catch((err) => {
-          alert("Music could not play. Please check Song.mp3 format.");
-          console.log(err);
-        });
-      }
-    }
-
-    const weddingDate = new Date(2026, 10, 21, 0, 0, 0).getTime();
-
-    const countdownEl = document.getElementById("countdown");
-    const daysEl = document.getElementById("days");
-    const hoursEl = document.getElementById("hours");
-    const minutesEl = document.getElementById("minutes");
-    const secondsEl = document.getElementById("seconds");
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = weddingDate - now;
-
-      if (distance <= 0) {
-        countdownEl.innerHTML = "<h2>🎉 It's Wedding Time! 🎉</h2>";
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      daysEl.textContent = days;
-      hoursEl.textContent = hours;
-      minutesEl.textContent = minutes;
-      secondsEl.textContent = seconds;
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-
-    const uploadInput = document.getElementById("photoUpload");
-    const previewImage = document.getElementById("previewImage");
-
-    uploadInput.addEventListener("change", function () {
-      const file = this.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        previewImage.src = e.target.result;
-        previewImage.style.display = "block";
-      };
-      reader.readAsDataURL(file);
-    });
-  </script>
+document.addEventListener("click",()=>{
+if(!play){song.play();play=true}
+},{once:true})
+</script>
 
 </body>
 </html>
