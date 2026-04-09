@@ -230,6 +230,7 @@
       z-index:2;
     }
 
+    /* DIVIDER */
     .divider{
       display:flex;
       align-items:center;
@@ -244,20 +245,13 @@
       background:linear-gradient(to right, transparent, #d889a2, transparent);
     }
 
-    .divider-heart{
-      color:#d77795;
+    .divider-symbol{
+      color:#d08aa0;
       font-size:22px;
-      animation:heartBeat 1.4s infinite ease-in-out;
-      transform-origin:center;
-    }
-
-    @keyframes heartBeat{
-      0%   { transform:scale(1); }
-      14%  { transform:scale(1.18); }
-      28%  { transform:scale(1); }
-      42%  { transform:scale(1.18); }
-      70%  { transform:scale(1); }
-      100% { transform:scale(1); }
+      line-height:1;
+      font-family:'Cormorant Garamond',serif;
+      transform:translateY(-1px);
+      text-shadow:0 0 8px rgba(215,119,149,0.08);
     }
 
     .small-title{
@@ -385,6 +379,20 @@
       stroke-linecap:round;
       filter:drop-shadow(0 0 6px rgba(215,119,149,0.28));
       transition:stroke-dashoffset 1s linear;
+    }
+
+    .circle-heart{
+      font-size:14px;
+      fill:#e27b9a;
+      filter:drop-shadow(0 0 6px rgba(226,123,154,0.4));
+      animation:heartGlow 2s ease-in-out infinite;
+      transform-origin:center;
+    }
+
+    @keyframes heartGlow{
+      0%   { opacity:0.6; transform:scale(1); }
+      50%  { opacity:1; transform:scale(1.2); }
+      100% { opacity:0.6; transform:scale(1); }
     }
 
     .circle-content{
@@ -596,28 +604,17 @@
       margin-bottom:12px;
     }
 
-    .combined-gb{
+    .heart-gb{
       font-family:'Great Vibes',cursive;
-      font-size:110px;
+      font-size:118px;
       line-height:1;
       color:#c75d7c;
-      letter-spacing:-18px;
+      letter-spacing:-22px;
+      transform:rotate(-2deg);
       text-shadow:
-        0 0 18px rgba(215,119,149,0.12),
-        0 6px 18px rgba(215,119,149,0.08);
+        0 0 20px rgba(215,119,149,0.12),
+        0 8px 20px rgba(215,119,149,0.08);
       position:relative;
-    }
-
-    .combined-gb::after{
-      content:"❤";
-      position:absolute;
-      font-size:26px;
-      color:#e27b9a;
-      top:32px;
-      left:50%;
-      transform:translateX(-50%);
-      animation:heartBeat 1.5s infinite ease-in-out;
-      filter:drop-shadow(0 0 10px rgba(226,123,154,0.28));
     }
 
     .footer-hashtag{
@@ -644,8 +641,7 @@
       .sub-text{font-size:26px}
       .message-text{font-size:24px}
       .upload-heading{font-size:42px}
-      .combined-gb{font-size:86px; letter-spacing:-12px;}
-      .combined-gb::after{top:26px;}
+      .heart-gb{font-size:90px; letter-spacing:-16px;}
 
       .upload-circle{
         width:210px;
@@ -723,7 +719,7 @@
     <div class="hero-box">
       <div class="divider">
         <div class="divider-line"></div>
-        <div class="divider-heart">❤</div>
+        <div class="divider-symbol">❦</div>
         <div class="divider-line"></div>
       </div>
 
@@ -754,7 +750,7 @@
   <section class="section">
     <div class="divider">
       <div class="divider-line"></div>
-      <div class="divider-heart">❤</div>
+      <div class="divider-symbol">❦</div>
       <div class="divider-line"></div>
     </div>
 
@@ -768,6 +764,7 @@
         <svg viewBox="0 0 130 130">
           <circle class="circle-bg" cx="65" cy="65" r="54"></circle>
           <circle class="circle-progress" id="daysCircle" cx="65" cy="65" r="54"></circle>
+          <text x="65" y="18" text-anchor="middle" class="circle-heart">❤</text>
         </svg>
         <div class="circle-content">
           <div class="circle-number" id="days">0</div>
@@ -779,6 +776,7 @@
         <svg viewBox="0 0 130 130">
           <circle class="circle-bg" cx="65" cy="65" r="54"></circle>
           <circle class="circle-progress" id="hoursCircle" cx="65" cy="65" r="54"></circle>
+          <text x="65" y="18" text-anchor="middle" class="circle-heart">❤</text>
         </svg>
         <div class="circle-content">
           <div class="circle-number" id="hours">0</div>
@@ -790,6 +788,7 @@
         <svg viewBox="0 0 130 130">
           <circle class="circle-bg" cx="65" cy="65" r="54"></circle>
           <circle class="circle-progress" id="minutesCircle" cx="65" cy="65" r="54"></circle>
+          <text x="65" y="18" text-anchor="middle" class="circle-heart">❤</text>
         </svg>
         <div class="circle-content">
           <div class="circle-number" id="minutes">0</div>
@@ -801,6 +800,7 @@
         <svg viewBox="0 0 130 130">
           <circle class="circle-bg" cx="65" cy="65" r="54"></circle>
           <circle class="circle-progress" id="secondsCircle" cx="65" cy="65" r="54"></circle>
+          <text x="65" y="18" text-anchor="middle" class="circle-heart">❤</text>
         </svg>
         <div class="circle-content">
           <div class="circle-number" id="seconds">0</div>
@@ -814,7 +814,7 @@
   <section class="section upload-section">
     <div class="divider">
       <div class="divider-line"></div>
-      <div class="divider-heart">❤</div>
+      <div class="divider-symbol">❦</div>
       <div class="divider-line"></div>
     </div>
 
@@ -851,7 +851,7 @@
   <section class="section">
     <div class="divider">
       <div class="divider-line"></div>
-      <div class="divider-heart">❤</div>
+      <div class="divider-symbol">❦</div>
       <div class="divider-line"></div>
     </div>
 
@@ -879,7 +879,7 @@
 
   <!-- FOOTER -->
   <div class="footer">
-    <div class="footer-monogram combined-gb">GB</div>
+    <div class="footer-monogram heart-gb">GB</div>
     <div class="footer-hashtag">#gokulwedsbharathi</div>
   </div>
 
