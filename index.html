@@ -1,276 +1,738 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gokul & Bharathi | Wedding Invitation</title>
 
-<title>Gokul ❤️ Bharathi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
+    html {
+      scroll-behavior: smooth;
+    }
 
-body{
-  font-family:'Poppins',sans-serif;
-  background:linear-gradient(180deg,#fff9f7,#fdeee7);
-  overflow-x:hidden;
-}
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #fdf8f5;
+      color: #4e3b3b;
+      overflow-x: hidden;
+    }
 
-/* INTRO */
-.intro{
-  position:fixed;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg,#fff0f3,#fde7ea);
-  z-index:9999;
-  transition:1.2s;
-}
-.intro.hide{opacity:0;visibility:hidden}
+    /* INTRO */
+    .intro {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: linear-gradient(rgba(255,248,245,0.92), rgba(255,248,245,0.94)),
+        url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: opacity 1.2s ease, visibility 1.2s ease;
+    }
 
-.intro h1{
-  font-family:'Great Vibes';
-  font-size:70px;
-  color:#a83f63;
-  animation:zoom 2s ease;
-}
+    .intro.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
 
-@keyframes zoom{
-  from{transform:scale(0.6);opacity:0}
-  to{transform:scale(1);opacity:1}
-}
+    .intro-box {
+      animation: fadeUp 1.8s ease;
+      padding: 20px;
+    }
 
-/* PARTICLES */
-.particle{
-  position:fixed;
-  font-size:18px;
-  animation:fall linear infinite;
-  opacity:0.6;
-}
+    .intro-box .small {
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #9a6c6c;
+      margin-bottom: 14px;
+    }
 
-@keyframes fall{
-  from{transform:translateY(-10vh)}
-  to{transform:translateY(110vh)}
-}
+    .intro-box h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 74px;
+      color: #a54563;
+      font-weight: 400;
+      line-height: 1.1;
+    }
 
-/* HERO */
-.hero{
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
+    .intro-box p {
+      margin-top: 10px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      color: #6d4c41;
+    }
 
-.box{
-  background:rgba(255,255,255,0.4);
-  backdrop-filter:blur(15px);
-  padding:40px;
-  border-radius:30px;
-  animation:fadeUp 1.5s ease;
-}
+    /* FLOAT BACKGROUND BLOBS */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.22;
+      z-index: -1;
+      animation: drift 14s ease-in-out infinite;
+    }
 
-h1{
-  font-family:'Great Vibes';
-  font-size:80px;
-  color:#a83f63;
-}
+    .blob.one {
+      width: 260px;
+      height: 260px;
+      background: #f7cdd7;
+      top: 8%;
+      left: -60px;
+    }
 
-.sub{
-  font-family:'Cormorant Garamond';
-  font-size:26px;
-}
+    .blob.two {
+      width: 320px;
+      height: 320px;
+      background: #f5d8c7;
+      bottom: 8%;
+      right: -90px;
+      animation-delay: 3s;
+    }
 
-/* FLOAT */
-@keyframes float{
-  0%{transform:translateY(0)}
-  50%{transform:translateY(-10px)}
-  100%{transform:translateY(0)}
-}
+    .blob.three {
+      width: 220px;
+      height: 220px;
+      background: #edd3de;
+      top: 40%;
+      left: 65%;
+      animation-delay: 6s;
+    }
 
-/* COUNTDOWN */
-.countdown{
-  display:flex;
-  gap:15px;
-  justify-content:center;
-  margin-top:30px;
-  flex-wrap:wrap;
-}
+    @keyframes drift {
+      0%,100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-20px) translateX(12px); }
+    }
 
-.time{
-  width:90px;
-  padding:20px;
-  border-radius:20px;
-  background:rgba(255,255,255,0.5);
-  backdrop-filter:blur(10px);
-  animation:float 4s infinite;
-}
+    /* MUSIC BUTTON */
+    .music-btn {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 52px;
+      height: 52px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(165, 69, 99, 0.95);
+      color: white;
+      font-size: 20px;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.16);
+      z-index: 1000;
+      cursor: pointer;
+    }
 
-.time h2{
-  font-size:32px;
-  color:#a83f63;
-}
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding: 90px 22px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
 
-/* UPLOAD */
-.upload{
-  margin:80px auto;
-  max-width:320px;
-  padding:25px;
-  border-radius:25px;
-  background:rgba(255,255,255,0.5);
-  backdrop-filter:blur(10px);
-  text-align:center;
-  animation:float 5s infinite;
-}
+    .hero-card {
+      width: 100%;
+      max-width: 980px;
+      padding: 48px 26px 44px;
+      border-radius: 34px;
+      background: rgba(255,255,255,0.62);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 18px 50px rgba(91, 60, 60, 0.08);
+      border: 1px solid rgba(255,255,255,0.75);
+      text-align: center;
+      animation: fadeUp 1.4s ease;
+    }
 
-.upload label{
-  display:block;
-  padding:25px;
-  border:2px dashed #e0bcbc;
-  border-radius:15px;
-  cursor:pointer;
-}
+    .tag {
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #9a6c6c;
+      margin-bottom: 16px;
+    }
 
-#photo{display:none}
+    .hero h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 92px;
+      color: #a54563;
+      line-height: 1.08;
+      font-weight: 400;
+    }
 
-#preview{
-  width:100%;
-  margin-top:15px;
-  border-radius:15px;
-}
+    .hero p {
+      max-width: 720px;
+      margin: 18px auto 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px;
+      line-height: 1.8;
+      color: #6d4c41;
+    }
 
-/* SCROLL */
-.reveal{
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s;
-}
-.reveal.active{
-  opacity:1;
-  transform:translateY(0);
-}
+    .date-pill {
+      display: inline-block;
+      margin-top: 26px;
+      padding: 14px 26px;
+      border-radius: 999px;
+      background: white;
+      color: #a54563;
+      font-weight: 600;
+      font-size: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
 
-/* MUSIC */
-.music{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#a83f63;
-  color:#fff;
-  border:none;
-  padding:12px;
-  border-radius:50%;
-}
+    /* SECTION */
+    .section {
+      padding: 90px 22px;
+      text-align: center;
+    }
 
-/* SHARE */
-.share{
-  display:block;
-  margin:40px auto;
-  padding:12px 25px;
-  background:#25D366;
-  color:white;
-  text-align:center;
-  border-radius:30px;
-  width:200px;
-}
-</style>
+    .section-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 60px;
+      color: #a54563;
+      margin-bottom: 14px;
+      font-weight: 400;
+    }
+
+    .section-sub {
+      max-width: 760px;
+      margin: 0 auto;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      line-height: 1.8;
+      color: #6d4c41;
+    }
+
+    .quote {
+      margin-top: 22px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 30px;
+      color: #8f6767;
+    }
+
+    /* ELEGANT COUNTDOWN */
+    .countdown-elegant {
+      margin-top: 48px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .count-card {
+      position: relative;
+      width: 115px;
+      height: 145px;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: 0 18px 35px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .count-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 40px rgba(0,0,0,0.08);
+    }
+
+    .count-ring {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border: 2px solid rgba(165, 69, 99, 0.08);
+      border-radius: 50%;
+      top: -50px;
+      right: -40px;
+    }
+
+    .count-num {
+      font-size: 42px;
+      font-weight: 600;
+      color: #a54563;
+      line-height: 1;
+      z-index: 2;
+      transition: transform 0.2s ease;
+    }
+
+    .count-label {
+      margin-top: 10px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #8b6a6a;
+      z-index: 2;
+    }
+
+    /* CARDS */
+    .cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 22px;
+      margin-top: 40px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 330px;
+      padding: 30px 24px;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.06);
+      border: 1px solid rgba(255,255,255,0.72);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px;
+      color: #a54563;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      line-height: 1.8;
+      color: #6d4c41;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 13px 26px;
+      border-radius: 999px;
+      background: #a54563;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 12px 24px rgba(165, 69, 99, 0.22);
+    }
+
+    /* LUXURY UPLOAD */
+    .upload-luxury-card {
+      margin: 44px auto 0;
+      width: 100%;
+      max-width: 400px;
+      padding: 30px 24px;
+      border-radius: 34px;
+      background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.82);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.06);
+      animation: gentleFloat 5s ease-in-out infinite;
+    }
+
+    @keyframes gentleFloat {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .upload-top-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #fff1f4, #ffe7eb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 10px 20px rgba(165,69,99,0.08);
+    }
+
+    .upload-luxury-area {
+      display: block;
+      padding: 26px 18px;
+      border: 2px dashed #e1c5c5;
+      border-radius: 24px;
+      cursor: pointer;
+      background: rgba(255,255,255,0.65);
+      transition: all 0.28s ease;
+    }
+
+    .upload-luxury-area:hover {
+      transform: scale(1.02);
+      background: rgba(255,245,247,0.96);
+    }
+
+    .upload-main-text {
+      display: block;
+      font-size: 17px;
+      font-weight: 600;
+      color: #a54563;
+    }
+
+    .upload-sub-text {
+      display: block;
+      margin-top: 8px;
+      font-size: 13px;
+      color: #8d7272;
+    }
+
+    #photoUpload {
+      display: none;
+    }
+
+    #wishText {
+      width: 100%;
+      margin-top: 18px;
+      border: 1px solid #ead7d7;
+      border-radius: 20px;
+      padding: 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      background: rgba(255,255,255,0.88);
+      outline: none;
+      resize: none;
+    }
+
+    #previewImage {
+      display: none;
+      width: 100%;
+      margin-top: 18px;
+      border-radius: 22px;
+      box-shadow: 0 16px 28px rgba(0,0,0,0.08);
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: all 1s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 36px 20px 50px;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      color: #7b5f5f;
+    }
+
+    /* ANIM */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .intro-box h1 { font-size: 56px; }
+      .intro-box p { font-size: 24px; }
+
+      .hero {
+        padding-top: 100px;
+      }
+
+      .hero-card {
+        padding: 38px 20px 36px;
+        border-radius: 28px;
+      }
+
+      .hero h1 {
+        font-size: 64px;
+      }
+
+      .hero p {
+        font-size: 24px;
+      }
+
+      .section-title {
+        font-size: 46px;
+      }
+
+      .section-sub,
+      .card p {
+        font-size: 22px;
+      }
+
+      .card h3 {
+        font-size: 28px;
+      }
+
+      .count-card {
+        width: 95px;
+        height: 130px;
+      }
+
+      .count-num {
+        font-size: 34px;
+      }
+
+      .upload-luxury-card {
+        max-width: 360px;
+        padding: 26px 20px;
+      }
+
+      .footer {
+        font-size: 22px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- INTRO -->
-<div class="intro" id="intro">
-  <h1>Gokul & Bharathi</h1>
-</div>
+  <!-- INTRO -->
+  <div class="intro" id="intro">
+    <div class="intro-box">
+      <div class="small">Wedding Invitation</div>
+      <h1>Gokul & Bharathi</h1>
+      <p>A Beautiful Beginning</p>
+    </div>
+  </div>
 
-<!-- MUSIC -->
-<button class="music" onclick="toggleMusic()">🎵</button>
-<audio id="song" loop>
-  <source src="Song.mp3">
-</audio>
+  <!-- BLOBS -->
+  <div class="blob one"></div>
+  <div class="blob two"></div>
+  <div class="blob three"></div>
 
-<!-- PARTICLES -->
-<script>
-for(let i=0;i<20;i++){
-  let p=document.createElement("div")
-  p.className="particle"
-  p.innerHTML="🌸"
-  p.style.left=Math.random()*100+"%"
-  p.style.animationDuration=(5+Math.random()*5)+"s"
-  document.body.appendChild(p)
-}
-</script>
+  <!-- MUSIC -->
+  <button class="music-btn" onclick="toggleMusic()">🎵</button>
+  <audio id="bgMusic" loop playsinline preload="auto">
+    <source src="./Song.mp3" type="audio/mpeg">
+  </audio>
 
-<!-- HERO -->
-<section class="hero">
-<div class="box reveal">
-<h1>Gokul ❤️ Bharathi</h1>
-<p class="sub">We invite you to celebrate our wedding</p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-card reveal">
+      <div class="tag">Wedding Invitation</div>
+      <h1>Gokul <br>&<br> Bharathi</h1>
+      <p>
+        With the blessings of our families, we joyfully invite you to celebrate
+        our wedding and bless us as we begin our beautiful journey together.
+      </p>
+      <div class="date-pill">21st November 2026</div>
+    </div>
+  </section>
 
-<div class="countdown">
-<div class="time"><h2 id="d"></h2>Days</div>
-<div class="time"><h2 id="h"></h2>Hrs</div>
-<div class="time"><h2 id="m"></h2>Min</div>
-<div class="time"><h2 id="s"></h2>Sec</div>
-</div>
-</div>
-</section>
+  <!-- SPECIAL DAY -->
+  <section class="section reveal">
+    <h2 class="section-title">Our Special Day</h2>
+    <p class="section-sub">
+      Two hearts, two families, one beautiful beginning. Your presence on our
+      special day will make our celebration even more memorable and meaningful.
+    </p>
+    <div class="quote">“Together is a beautiful place to be.”</div>
+  </section>
 
-<!-- UPLOAD -->
-<div class="upload reveal">
-<label for="photo">📸 Upload Your Photo</label>
-<input type="file" id="photo">
-<img id="preview">
-</div>
+  <!-- COUNTDOWN -->
+  <section class="section reveal">
+    <h2 class="section-title">Countdown to Forever</h2>
+    <p class="section-sub">Counting every precious moment until our special day.</p>
 
-<!-- SHARE -->
-<a class="share" href="https://wa.me/?text=Join%20our%20wedding%20celebration!%20https://gokulbharathi21.github.io/Gokul-Bharathi-invite/" target="_blank">
-Share Invite 💌
-</a>
+    <div class="countdown-elegant">
+      <div class="count-card">
+        <div class="count-ring"></div>
+        <div class="count-num" id="days">0</div>
+        <div class="count-label">Days</div>
+      </div>
 
-<script>
-// INTRO
-setTimeout(()=>{intro.classList.add("hide")},3000)
+      <div class="count-card">
+        <div class="count-ring"></div>
+        <div class="count-num" id="hours">0</div>
+        <div class="count-label">Hours</div>
+      </div>
 
-// COUNTDOWN
-const target=new Date(2026,10,21).getTime()
-setInterval(()=>{
-let now=new Date().getTime()
-let diff=target-now
-d.innerText=Math.floor(diff/(1000*60*60*24))
-h.innerText=Math.floor(diff/(1000*60*60)%24)
-m.innerText=Math.floor(diff/(1000*60)%60)
-s.innerText=Math.floor(diff/1000%60)
-},1000)
+      <div class="count-card">
+        <div class="count-ring"></div>
+        <div class="count-num" id="minutes">0</div>
+        <div class="count-label">Minutes</div>
+      </div>
 
-// UPLOAD
-photo.onchange=e=>{
-let r=new FileReader()
-r.onload=()=>preview.src=r.result
-r.readAsDataURL(e.target.files[0])
-}
+      <div class="count-card">
+        <div class="count-ring"></div>
+        <div class="count-num" id="seconds">0</div>
+        <div class="count-label">Seconds</div>
+      </div>
+    </div>
+  </section>
 
-// SCROLL
-window.addEventListener("scroll",()=>{
-document.querySelectorAll(".reveal").forEach(el=>{
-if(el.getBoundingClientRect().top<window.innerHeight-50)
-el.classList.add("active")
-})
-})
+  <!-- UPLOAD -->
+  <section class="section reveal">
+    <h2 class="section-title">Share Your Wishes</h2>
+    <p class="section-sub">Upload your beautiful memory and leave your blessings for us.</p>
 
-// MUSIC
-let play=false
-function toggleMusic(){
-if(play){song.pause()}else{song.play()}
-play=!play
-}
+    <div class="upload-luxury-card">
+      <div class="upload-top-icon">📸</div>
 
-document.addEventListener("click",()=>{
-if(!play){song.play();play=true}
-},{once:true})
-</script>
+      <label for="photoUpload" class="upload-luxury-area">
+        <span class="upload-main-text">Tap to Upload Your Photo</span>
+        <span class="upload-sub-text">Share your smile with us</span>
+      </label>
+
+      <input type="file" id="photoUpload" accept="image/*">
+
+      <textarea id="wishText" rows="4" placeholder="Write your lovely wishes here..."></textarea>
+
+      <img id="previewImage" alt="Preview">
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="section reveal">
+    <h2 class="section-title">Wedding Details</h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Date</h3>
+        <p>21st November 2026<br>Wedding Ceremony</p>
+      </div>
+
+      <div class="card">
+        <h3>Venue</h3>
+        <p>Kulandhai Velayudasamy Seva Sanga<br>Thirumana Mandapam</p>
+        <a class="btn" href="https://maps.app.goo.gl/gh4hvVGi5xa8dMxw8?g_st=ic" target="_blank">Open Map</a>
+      </div>
+
+      <div class="card">
+        <h3>RSVP</h3>
+        <p>We would be happy to celebrate this special day with you.</p>
+        <a class="btn" href="https://wa.me/919894303659" target="_blank">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    Made with love for Gokul & Bharathi
+  </div>
+
+  <script>
+    // INTRO
+    setTimeout(() => {
+      document.getElementById("intro").classList.add("hide");
+    }, 3000);
+
+    // MUSIC
+    const music = document.getElementById("bgMusic");
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        isPlaying = false;
+      } else {
+        music.play().then(() => {
+          isPlaying = true;
+        }).catch(err => console.log(err));
+      }
+    }
+
+    document.addEventListener("click", function autoPlayOnce() {
+      if (!isPlaying) {
+        music.volume = 0.5;
+        music.play().then(() => {
+          isPlaying = true;
+        }).catch(err => console.log(err));
+      }
+      document.removeEventListener("click", autoPlayOnce);
+    });
+
+    // COUNTDOWN
+    const weddingDate = new Date(2026, 10, 21, 0, 0, 0).getTime();
+
+    function animateNumber(el, value) {
+      el.style.transform = "scale(0.92)";
+      setTimeout(() => {
+        el.textContent = value;
+        el.style.transform = "scale(1)";
+      }, 120);
+    }
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = weddingDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("days").textContent = "0";
+        document.getElementById("hours").textContent = "0";
+        document.getElementById("minutes").textContent = "0";
+        document.getElementById("seconds").textContent = "0";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      animateNumber(document.getElementById("days"), days);
+      animateNumber(document.getElementById("hours"), hours);
+      animateNumber(document.getElementById("minutes"), minutes);
+      animateNumber(document.getElementById("seconds"), seconds);
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // UPLOAD PREVIEW
+    const uploadInput = document.getElementById("photoUpload");
+    const previewImage = document.getElementById("previewImage");
+
+    uploadInput.addEventListener("change", function () {
+      const file = this.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        previewImage.src = e.target.result;
+        previewImage.style.display = "block";
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // SCROLL REVEAL
+    const revealItems = document.querySelectorAll(".reveal");
+
+    function revealOnScroll() {
+      revealItems.forEach(item => {
+        const top = item.getBoundingClientRect().top;
+        if (top < window.innerHeight - 80) {
+          item.classList.add("show");
+        }
+      });
+    }
+
+    revealOnScroll();
+    window.addEventListener("scroll", revealOnScroll);
+  </script>
 
 </body>
 </html>
