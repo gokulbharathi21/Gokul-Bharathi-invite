@@ -29,7 +29,7 @@
     }
 
     /* =========================
-       INTRO - ROSE THEME
+       INTRO
     ========================== */
     .intro-loader{
       position:fixed;
@@ -63,29 +63,33 @@
       filter:blur(16px);
     }
 
-    /* PREMIUM NAME STYLE */
+    /* =========================
+       NAME STYLING
+    ========================== */
     .ice-name,
     .main-script{
       font-family:'Great Vibes',cursive;
-      font-size:86px;
       line-height:0.95;
       display:flex;
       flex-direction:column;
       align-items:center;
       justify-content:center;
-      gap:6px;
+      gap:2px;
       position:relative;
       z-index:2;
       font-weight:700;
     }
 
     .ice-name{
+      font-size:84px;
       color:#d36d8d;
     }
 
     .main-script{
+      font-size:68px; /* reduced to stop overlap */
       color:#c75d7c;
-      margin-bottom:12px;
+      margin-top:10px;
+      margin-bottom:20px;
     }
 
     .ice-name::before,
@@ -124,9 +128,9 @@
 
     .ice-name .amp,
     .main-script .amp{
-      font-size:54px;
+      font-size:52px;
       line-height:1;
-      margin:4px 0;
+      margin:2px 0;
       opacity:0.95;
     }
 
@@ -156,23 +160,16 @@
         opacity:0;
         filter:blur(14px);
         transform:translateY(18px) scale(0.98);
-        text-shadow:0 0 0 rgba(255,255,255,0);
       }
       60%{
         opacity:1;
         filter:blur(2px);
         transform:translateY(0) scale(1.01);
-        text-shadow:
-          0 0 18px rgba(255,255,255,0.35),
-          0 0 30px rgba(215,119,149,0.18);
       }
       100%{
         opacity:1;
         filter:blur(0);
         transform:translateY(0) scale(1);
-        text-shadow:
-          0 0 10px rgba(255,255,255,0.20),
-          0 0 18px rgba(215,119,149,0.10);
       }
     }
 
@@ -231,7 +228,9 @@
       background-position:center;
     }
 
-    /* FLOWERS ON MAIN PAGE ONLY */
+    /* =========================
+       FLOWERS
+    ========================== */
     .flowers{
       position:fixed;
       inset:0;
@@ -295,7 +294,9 @@
       left:65%;
     }
 
-    /* LAYOUT */
+    /* =========================
+       LAYOUT
+    ========================== */
     .section{
       padding:38px 16px;
       position:relative;
@@ -362,18 +363,6 @@
       animation:fadeUp 1.4s ease;
     }
 
-    .hero-date{
-      margin-top:16px;
-      display:inline-block;
-      padding:12px 22px;
-      border-radius:999px;
-      border:1px solid rgba(215,119,149,0.16);
-      color:#c75d7c;
-      font-weight:600;
-      background:rgba(255,255,255,0.72);
-      box-shadow:0 8px 18px rgba(215,119,149,0.06);
-    }
-
     .message-box{
       max-width:760px;
       margin:26px auto 0;
@@ -401,7 +390,9 @@
       color:#7b5b67;
     }
 
-    /* COUNTDOWN */
+    /* =========================
+       COUNTDOWN FIXED
+    ========================== */
     .countdown-wrap{
       display:flex;
       justify-content:center;
@@ -444,10 +435,11 @@
       transition:stroke-dashoffset 1s linear;
     }
 
+    /* PERFECTLY CENTERED MOVING DOT */
     .moving-heart{
       position:absolute;
-      width:9px;
-      height:9px;
+      width:10px;
+      height:10px;
       border-radius:50%;
       background:radial-gradient(circle at 30% 30%, #fff, #fbe6ee 60%, #d77795 100%);
       box-shadow:
@@ -455,7 +447,7 @@
         0 0 10px rgba(255,255,255,0.42);
       z-index:4;
       pointer-events:none;
-      margin:-4.5px;
+      transform:translate(-50%, -50%);
     }
 
     .circle-content{
@@ -486,7 +478,9 @@
       line-height:1.2;
     }
 
-    /* UPLOAD */
+    /* =========================
+       UPLOAD
+    ========================== */
     .upload-section{
       max-width:820px;
       margin:0 auto;
@@ -584,7 +578,9 @@
       line-height:1.7;
     }
 
-    /* DETAILS */
+    /* =========================
+       DETAILS
+    ========================== */
     .card-grid{
       display:flex;
       justify-content:center;
@@ -691,9 +687,14 @@
     }
 
     @media (max-width:768px){
-      .ice-name,
-      .main-script{
+      .ice-name{
         font-size:62px;
+      }
+
+      .main-script{
+        font-size:52px; /* smaller on mobile to avoid overlap */
+        margin-top:8px;
+        margin-bottom:18px;
       }
 
       .sub-text{font-size:25px}
@@ -787,6 +788,7 @@
       </div>
 
       <div class="small-title">Wedding Invitation</div>
+
       <div class="main-script hero-glow-name">
         <span>Gokul</span>
         <span class="amp">&</span>
@@ -797,8 +799,6 @@
         With the blessings of our families, we joyfully invite you to celebrate
         our wedding and bless us as we begin our beautiful journey together.
       </div>
-
-      <div class="hero-date">21st November 2026</div>
     </div>
   </section>
 
@@ -975,7 +975,6 @@
       }
     }
 
-    // try autoplay after first interaction
     document.addEventListener("click", function autoPlayOnce() {
       if (!isPlaying) {
         music.volume = 0.5;
@@ -1029,7 +1028,6 @@
       document.getElementById("minutes").textContent = minutes;
       document.getElementById("seconds").textContent = seconds;
 
-      // days ring cycles yearly for visual smoothness
       setCircle("daysCircle", days % 365, 365);
       setCircle("hoursCircle", hours, 24);
       setCircle("minutesCircle", minutes, 60);
@@ -1044,7 +1042,7 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // MESSAGE BOX + SCROLL REVEAL
+    // SCROLL REVEAL
     const box = document.getElementById("messageBox");
     const reveals = document.querySelectorAll(".reveal");
 
