@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gokul & Bharathi | Wedding Invitation</title>
+  <title>Gokul ❤️ Bharathi | Wedding Invitation</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -17,29 +17,25 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
-      font-family: 'Montserrat', sans-serif;
-      background: #fdf8f5;
-      color: #4e3b3b;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #fff8f4, #fdeee7, #fffaf7);
+      color: #4b2e2e;
       overflow-x: hidden;
+      text-align: center;
     }
 
     /* INTRO */
     .intro {
       position: fixed;
       inset: 0;
-      z-index: 9999;
-      background: linear-gradient(rgba(255,248,245,0.92), rgba(255,248,245,0.94)),
+      background: linear-gradient(rgba(255,248,245,0.92), rgba(255,248,245,0.95)),
         url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      transition: opacity 1.2s ease, visibility 1.2s ease;
+      z-index: 9999;
+      transition: opacity 1s ease, visibility 1s ease;
     }
 
     .intro.hide {
@@ -48,72 +44,45 @@
     }
 
     .intro-box {
-      animation: fadeUp 1.8s ease;
+      animation: fadeUp 1.5s ease;
       padding: 20px;
     }
 
-    .intro-box .small {
-      font-size: 13px;
+    .intro-small {
       letter-spacing: 4px;
+      font-size: 13px;
       text-transform: uppercase;
       color: #9a6c6c;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
-    .intro-box h1 {
+    .intro h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 74px;
-      color: #a54563;
-      font-weight: 400;
+      font-size: 72px;
+      color: #b03a5b;
       line-height: 1.1;
     }
 
-    .intro-box p {
+    .intro p {
       margin-top: 10px;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
+      font-size: 20px;
       color: #6d4c41;
     }
 
-    /* FLOAT BACKGROUND BLOBS */
-    .blob {
+    /* FLOATING PETALS */
+    .petal {
       position: fixed;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.22;
-      z-index: -1;
-      animation: drift 14s ease-in-out infinite;
+      top: -20px;
+      font-size: 18px;
+      animation: fall linear infinite;
+      z-index: 0;
+      opacity: 0.6;
+      pointer-events: none;
     }
 
-    .blob.one {
-      width: 260px;
-      height: 260px;
-      background: #f7cdd7;
-      top: 8%;
-      left: -60px;
-    }
-
-    .blob.two {
-      width: 320px;
-      height: 320px;
-      background: #f5d8c7;
-      bottom: 8%;
-      right: -90px;
-      animation-delay: 3s;
-    }
-
-    .blob.three {
-      width: 220px;
-      height: 220px;
-      background: #edd3de;
-      top: 40%;
-      left: 65%;
-      animation-delay: 6s;
-    }
-
-    @keyframes drift {
-      0%,100% { transform: translateY(0) translateX(0); }
-      50% { transform: translateY(-20px) translateX(12px); }
+    @keyframes fall {
+      0% { transform: translateY(-20px) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
     }
 
     /* MUSIC BUTTON */
@@ -121,186 +90,149 @@
       position: fixed;
       right: 18px;
       bottom: 18px;
-      width: 52px;
-      height: 52px;
+      background: #b03a5b;
+      color: #fff;
       border: none;
-      border-radius: 50%;
-      background: rgba(165, 69, 99, 0.95);
-      color: white;
-      font-size: 20px;
-      box-shadow: 0 12px 25px rgba(0,0,0,0.16);
-      z-index: 1000;
+      border-radius: 999px;
+      padding: 14px 18px;
       cursor: pointer;
+      font-size: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+      z-index: 1000;
     }
 
     /* HERO */
     .hero {
       min-height: 100vh;
-      padding: 90px 22px 60px;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
+      padding: 40px 20px;
+      background:
+        linear-gradient(rgba(255,248,244,0.82), rgba(255,248,244,0.88)),
+        url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
     }
 
-    .hero-card {
-      width: 100%;
-      max-width: 980px;
-      padding: 48px 26px 44px;
-      border-radius: 34px;
-      background: rgba(255,255,255,0.62);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 18px 50px rgba(91, 60, 60, 0.08);
-      border: 1px solid rgba(255,255,255,0.75);
-      text-align: center;
-      animation: fadeUp 1.4s ease;
+    .hero-content {
+      max-width: 800px;
+      animation: fadeUp 1.8s ease;
     }
 
     .tag {
-      font-size: 12px;
       letter-spacing: 4px;
+      font-size: 13px;
       text-transform: uppercase;
       color: #9a6c6c;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .hero h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 92px;
-      color: #a54563;
-      line-height: 1.08;
-      font-weight: 400;
+      font-size: 82px;
+      color: #b03a5b;
+      line-height: 1.1;
+      margin-bottom: 12px;
     }
 
     .hero p {
-      max-width: 720px;
-      margin: 18px auto 0;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 30px;
-      line-height: 1.8;
+      font-size: 18px;
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.9;
       color: #6d4c41;
     }
 
-    .date-pill {
+    .date-box {
       display: inline-block;
-      margin-top: 26px;
-      padding: 14px 26px;
-      border-radius: 999px;
-      background: white;
-      color: #a54563;
+      margin-top: 28px;
+      padding: 14px 28px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.8);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      color: #8b2e4f;
       font-weight: 600;
-      font-size: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      font-size: 18px;
     }
 
     /* SECTION */
     .section {
-      padding: 90px 22px;
-      text-align: center;
+      padding: 75px 20px;
+      position: relative;
+      z-index: 1;
     }
 
-    .section-title {
+    .section h2 {
       font-family: 'Great Vibes', cursive;
-      font-size: 60px;
-      color: #a54563;
-      margin-bottom: 14px;
-      font-weight: 400;
+      font-size: 54px;
+      color: #b03a5b;
+      margin-bottom: 18px;
     }
 
-    .section-sub {
+    .section p {
       max-width: 760px;
-      margin: 0 auto;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
-      line-height: 1.8;
+      margin: auto;
+      font-size: 17px;
+      line-height: 1.9;
       color: #6d4c41;
     }
 
     .quote {
-      margin-top: 22px;
-      font-family: 'Cormorant Garamond', serif;
+      margin-top: 24px;
+      font-size: 24px;
       font-style: italic;
-      font-size: 30px;
-      color: #8f6767;
+      color: #8b5a5a;
     }
 
-    /* ELEGANT COUNTDOWN */
-    .countdown-elegant {
-      margin-top: 48px;
+    /* COUNTDOWN */
+    .countdown {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 18px;
+      margin-top: 38px;
     }
 
-    .count-card {
-      position: relative;
-      width: 115px;
-      height: 145px;
-      border-radius: 30px;
-      background: rgba(255,255,255,0.78);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,0.8);
-      box-shadow: 0 18px 35px rgba(0,0,0,0.06);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .time-box {
+      background: rgba(255,255,255,0.92);
+      padding: 22px 18px;
+      width: 105px;
+      border-radius: 22px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.07);
+      transition: transform 0.25s ease;
     }
 
-    .count-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 22px 40px rgba(0,0,0,0.08);
+    .time-box:hover {
+      transform: translateY(-4px);
     }
 
-    .count-ring {
-      position: absolute;
-      width: 150px;
-      height: 150px;
-      border: 2px solid rgba(165, 69, 99, 0.08);
-      border-radius: 50%;
-      top: -50px;
-      right: -40px;
+    .time-box h3 {
+      font-size: 34px;
+      color: #b03a5b;
+      margin-bottom: 6px;
     }
 
-    .count-num {
-      font-size: 42px;
-      font-weight: 600;
-      color: #a54563;
-      line-height: 1;
-      z-index: 2;
-      transition: transform 0.2s ease;
-    }
-
-    .count-label {
-      margin-top: 10px;
-      font-size: 12px;
-      letter-spacing: 2px;
+    .time-box span {
+      font-size: 13px;
+      color: #7b5b5b;
       text-transform: uppercase;
-      color: #8b6a6a;
-      z-index: 2;
+      letter-spacing: 1px;
     }
 
     /* CARDS */
-    .cards {
+    .card-container {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 22px;
+      gap: 24px;
       margin-top: 40px;
     }
 
     .card {
-      width: 100%;
-      max-width: 330px;
-      padding: 30px 24px;
-      border-radius: 30px;
-      background: rgba(255,255,255,0.72);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 14px 32px rgba(0,0,0,0.06);
-      border: 1px solid rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.95);
+      padding: 32px 25px;
+      width: 330px;
+      border-radius: 26px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.07);
       transition: transform 0.3s ease;
     }
 
@@ -309,91 +241,58 @@
     }
 
     .card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 30px;
-      color: #a54563;
-      margin-bottom: 12px;
+      font-size: 24px;
+      color: #b03a5b;
+      margin-bottom: 15px;
     }
 
     .card p {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
-      line-height: 1.8;
+      font-size: 16px;
+      line-height: 1.9;
       color: #6d4c41;
     }
 
     .btn {
       display: inline-block;
       margin-top: 20px;
-      padding: 13px 26px;
-      border-radius: 999px;
-      background: #a54563;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #b03a5b, #d96c8f);
       color: white;
       text-decoration: none;
-      font-size: 14px;
+      border-radius: 999px;
       font-weight: 600;
-      box-shadow: 0 12px 24px rgba(165, 69, 99, 0.22);
+      box-shadow: 0 10px 20px rgba(176, 58, 91, 0.25);
+      transition: transform 0.3s ease;
     }
 
-    /* LUXURY UPLOAD */
-    .upload-luxury-card {
-      margin: 44px auto 0;
-      width: 100%;
-      max-width: 400px;
-      padding: 30px 24px;
-      border-radius: 34px;
-      background: rgba(255,255,255,0.78);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,0.82);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.06);
-      animation: gentleFloat 5s ease-in-out infinite;
+    .btn:hover {
+      transform: scale(1.05);
     }
 
-    @keyframes gentleFloat {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-
-    .upload-top-icon {
-      width: 70px;
-      height: 70px;
-      margin: 0 auto 18px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #fff1f4, #ffe7eb);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      box-shadow: 0 10px 20px rgba(165,69,99,0.08);
-    }
-
-    .upload-luxury-area {
-      display: block;
-      padding: 26px 18px;
-      border: 2px dashed #e1c5c5;
+    /* UPLOAD */
+    .upload-card {
+      max-width: 340px;
+      margin: 30px auto 0;
+      padding: 25px;
       border-radius: 24px;
+      background: #fff;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    }
+
+    .upload-area {
+      display: block;
+      padding: 30px;
+      border: 2px dashed #e8bcbc;
+      border-radius: 18px;
+      text-align: center;
       cursor: pointer;
-      background: rgba(255,255,255,0.65);
-      transition: all 0.28s ease;
+      color: #b03a5b;
+      font-weight: 500;
+      transition: 0.3s;
     }
 
-    .upload-luxury-area:hover {
-      transform: scale(1.02);
-      background: rgba(255,245,247,0.96);
-    }
-
-    .upload-main-text {
-      display: block;
-      font-size: 17px;
-      font-weight: 600;
-      color: #a54563;
-    }
-
-    .upload-sub-text {
-      display: block;
-      margin-top: 8px;
-      font-size: 13px;
-      color: #8d7272;
+    .upload-area:hover {
+      background: #fff0f3;
     }
 
     #photoUpload {
@@ -402,47 +301,31 @@
 
     #wishText {
       width: 100%;
-      margin-top: 18px;
-      border: 1px solid #ead7d7;
-      border-radius: 20px;
-      padding: 16px;
-      font-family: 'Montserrat', sans-serif;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid #e5cfcf;
       font-size: 14px;
-      background: rgba(255,255,255,0.88);
-      outline: none;
-      resize: none;
+      font-family: 'Poppins', sans-serif;
     }
 
     #previewImage {
       display: none;
       width: 100%;
-      margin-top: 18px;
-      border-radius: 22px;
-      box-shadow: 0 16px 28px rgba(0,0,0,0.08);
-    }
-
-    /* REVEAL */
-    .reveal {
-      opacity: 0;
-      transform: translateY(34px);
-      transition: all 1s ease;
-    }
-
-    .reveal.show {
-      opacity: 1;
-      transform: translateY(0);
+      margin-top: 15px;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     }
 
     /* FOOTER */
     .footer {
-      padding: 36px 20px 50px;
       text-align: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
-      color: #7b5f5f;
+      padding: 35px 20px 45px;
+      color: #7a5c5c;
+      font-size: 15px;
     }
 
-    /* ANIM */
+    /* ANIMATIONS */
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -455,56 +338,13 @@
     }
 
     @media (max-width: 768px) {
-      .intro-box h1 { font-size: 56px; }
-      .intro-box p { font-size: 24px; }
-
-      .hero {
-        padding-top: 100px;
-      }
-
-      .hero-card {
-        padding: 38px 20px 36px;
-        border-radius: 28px;
-      }
-
-      .hero h1 {
-        font-size: 64px;
-      }
-
-      .hero p {
-        font-size: 24px;
-      }
-
-      .section-title {
-        font-size: 46px;
-      }
-
-      .section-sub,
-      .card p {
-        font-size: 22px;
-      }
-
-      .card h3 {
-        font-size: 28px;
-      }
-
-      .count-card {
-        width: 95px;
-        height: 130px;
-      }
-
-      .count-num {
-        font-size: 34px;
-      }
-
-      .upload-luxury-card {
-        max-width: 360px;
-        padding: 26px 20px;
-      }
-
-      .footer {
-        font-size: 22px;
-      }
+      .intro h1 { font-size: 56px; }
+      .hero h1 { font-size: 58px; }
+      .hero p { font-size: 16px; }
+      .section h2 { font-size: 42px; }
+      .time-box { width: 90px; padding: 18px 12px; }
+      .time-box h3 { font-size: 28px; }
+      .card { width: 100%; max-width: 340px; }
     }
   </style>
 </head>
@@ -513,40 +353,47 @@
   <!-- INTRO -->
   <div class="intro" id="intro">
     <div class="intro-box">
-      <div class="small">Wedding Invitation</div>
+      <div class="intro-small">Wedding Invitation</div>
       <h1>Gokul & Bharathi</h1>
       <p>A Beautiful Beginning</p>
     </div>
   </div>
 
-  <!-- BLOBS -->
-  <div class="blob one"></div>
-  <div class="blob two"></div>
-  <div class="blob three"></div>
-
   <!-- MUSIC -->
-  <button class="music-btn" onclick="toggleMusic()">🎵</button>
+  <button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
   <audio id="bgMusic" loop playsinline preload="auto">
     <source src="./Song.mp3" type="audio/mpeg">
   </audio>
 
+  <!-- PETALS -->
+  <div class="petal" style="left: 5%; animation-duration: 10s;">🌸</div>
+  <div class="petal" style="left: 15%; animation-duration: 12s;">🌸</div>
+  <div class="petal" style="left: 25%; animation-duration: 9s;">🌸</div>
+  <div class="petal" style="left: 35%; animation-duration: 14s;">🌸</div>
+  <div class="petal" style="left: 45%; animation-duration: 11s;">🌸</div>
+  <div class="petal" style="left: 55%; animation-duration: 13s;">🌸</div>
+  <div class="petal" style="left: 65%; animation-duration: 10s;">🌸</div>
+  <div class="petal" style="left: 75%; animation-duration: 15s;">🌸</div>
+  <div class="petal" style="left: 85%; animation-duration: 12s;">🌸</div>
+  <div class="petal" style="left: 95%; animation-duration: 9s;">🌸</div>
+
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-card reveal">
+    <div class="hero-content">
       <div class="tag">Wedding Invitation</div>
-      <h1>Gokul <br>&<br> Bharathi</h1>
+      <h1>Gokul <br> & <br> Bharathi</h1>
       <p>
-        With the blessings of our families, we joyfully invite you to celebrate
-        our wedding and bless us as we begin our beautiful journey together.
+        With the blessings of our families, we joyfully invite you to be a part
+        of our wedding celebration and bless us as we begin our beautiful journey together.
       </p>
-      <div class="date-pill">21st November 2026</div>
+      <div class="date-box">📅 21st November 2026</div>
     </div>
   </section>
 
   <!-- SPECIAL DAY -->
-  <section class="section reveal">
-    <h2 class="section-title">Our Special Day</h2>
-    <p class="section-sub">
+  <section class="section">
+    <h2>Our Special Day</h2>
+    <p>
       Two hearts, two families, one beautiful beginning. Your presence on our
       special day will make our celebration even more memorable and meaningful.
     </p>
@@ -554,84 +401,57 @@
   </section>
 
   <!-- COUNTDOWN -->
-  <section class="section reveal">
-    <h2 class="section-title">Countdown to Forever</h2>
-    <p class="section-sub">Counting every precious moment until our special day.</p>
+  <section class="section">
+    <h2>Countdown to Forever</h2>
+    <p>Counting every precious moment until our special day.</p>
 
-    <div class="countdown-elegant">
-      <div class="count-card">
-        <div class="count-ring"></div>
-        <div class="count-num" id="days">0</div>
-        <div class="count-label">Days</div>
-      </div>
-
-      <div class="count-card">
-        <div class="count-ring"></div>
-        <div class="count-num" id="hours">0</div>
-        <div class="count-label">Hours</div>
-      </div>
-
-      <div class="count-card">
-        <div class="count-ring"></div>
-        <div class="count-num" id="minutes">0</div>
-        <div class="count-label">Minutes</div>
-      </div>
-
-      <div class="count-card">
-        <div class="count-ring"></div>
-        <div class="count-num" id="seconds">0</div>
-        <div class="count-label">Seconds</div>
-      </div>
+    <div class="countdown" id="countdown">
+      <div class="time-box"><h3 id="days">0</h3><span>Days</span></div>
+      <div class="time-box"><h3 id="hours">0</h3><span>Hours</span></div>
+      <div class="time-box"><h3 id="minutes">0</h3><span>Minutes</span></div>
+      <div class="time-box"><h3 id="seconds">0</h3><span>Seconds</span></div>
     </div>
   </section>
 
   <!-- UPLOAD -->
-  <section class="section reveal">
-    <h2 class="section-title">Share Your Wishes</h2>
-    <p class="section-sub">Upload your beautiful memory and leave your blessings for us.</p>
+  <section class="section">
+    <h2>Share Your Wishes</h2>
+    <p>Upload your photo and leave your wishes for us ❤️</p>
 
-    <div class="upload-luxury-card">
-      <div class="upload-top-icon">📸</div>
-
-      <label for="photoUpload" class="upload-luxury-area">
-        <span class="upload-main-text">Tap to Upload Your Photo</span>
-        <span class="upload-sub-text">Share your smile with us</span>
-      </label>
-
+    <div class="upload-card">
+      <label for="photoUpload" class="upload-area">📸 Tap to Upload Photo</label>
       <input type="file" id="photoUpload" accept="image/*">
-
-      <textarea id="wishText" rows="4" placeholder="Write your lovely wishes here..."></textarea>
-
+      <textarea id="wishText" placeholder="Write your wishes..." rows="3"></textarea>
       <img id="previewImage" alt="Preview">
     </div>
   </section>
 
   <!-- DETAILS -->
-  <section class="section reveal">
-    <h2 class="section-title">Wedding Details</h2>
+  <section class="section">
+    <h2>Wedding Details</h2>
 
-    <div class="cards">
+    <div class="card-container">
       <div class="card">
-        <h3>Date</h3>
+        <h3>📅 Date</h3>
         <p>21st November 2026<br>Wedding Ceremony</p>
       </div>
 
       <div class="card">
-        <h3>Venue</h3>
+        <h3>📍 Venue</h3>
         <p>Kulandhai Velayudasamy Seva Sanga<br>Thirumana Mandapam</p>
-        <a class="btn" href="https://maps.app.goo.gl/gh4hvVGi5xa8dMxw8?g_st=ic" target="_blank">Open Map</a>
+        <a href="https://maps.app.goo.gl/gh4hvVGi5xa8dMxw8?g_st=ic" target="_blank" class="btn">Open Map</a>
       </div>
 
       <div class="card">
-        <h3>RSVP</h3>
+        <h3>📱 RSVP</h3>
         <p>We would be happy to celebrate this special day with you.</p>
-        <a class="btn" href="https://wa.me/919894303659" target="_blank">WhatsApp</a>
+        <a href="https://wa.me/919894303659" target="_blank" class="btn">RSVP on WhatsApp</a>
       </div>
     </div>
   </section>
 
   <div class="footer">
-    Made with love for Gokul & Bharathi
+    Made with ❤️ for Gokul & Bharathi
   </div>
 
   <script>
@@ -651,52 +471,45 @@
       } else {
         music.play().then(() => {
           isPlaying = true;
-        }).catch(err => console.log(err));
+        }).catch((err) => {
+          console.log("Music blocked:", err);
+        });
       }
     }
 
-    document.addEventListener("click", function autoPlayOnce() {
+    document.addEventListener("click", function startMusicOnce() {
       if (!isPlaying) {
         music.volume = 0.5;
         music.play().then(() => {
           isPlaying = true;
-        }).catch(err => console.log(err));
+        }).catch((err) => {
+          console.log("Music blocked:", err);
+        });
       }
-      document.removeEventListener("click", autoPlayOnce);
+      document.removeEventListener("click", startMusicOnce);
     });
 
     // COUNTDOWN
     const weddingDate = new Date(2026, 10, 21, 0, 0, 0).getTime();
 
-    function animateNumber(el, value) {
-      el.style.transform = "scale(0.92)";
-      setTimeout(() => {
-        el.textContent = value;
-        el.style.transform = "scale(1)";
-      }, 120);
-    }
-
     function updateCountdown() {
       const now = new Date().getTime();
-      const diff = weddingDate - now;
+      const distance = weddingDate - now;
 
-      if (diff <= 0) {
-        document.getElementById("days").textContent = "0";
-        document.getElementById("hours").textContent = "0";
-        document.getElementById("minutes").textContent = "0";
-        document.getElementById("seconds").textContent = "0";
+      if (distance <= 0) {
+        document.getElementById("countdown").innerHTML = "<h2>🎉 It's Wedding Time! 🎉</h2>";
         return;
       }
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      animateNumber(document.getElementById("days"), days);
-      animateNumber(document.getElementById("hours"), hours);
-      animateNumber(document.getElementById("minutes"), minutes);
-      animateNumber(document.getElementById("seconds"), seconds);
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
     }
 
     updateCountdown();
@@ -717,21 +530,6 @@
       };
       reader.readAsDataURL(file);
     });
-
-    // SCROLL REVEAL
-    const revealItems = document.querySelectorAll(".reveal");
-
-    function revealOnScroll() {
-      revealItems.forEach(item => {
-        const top = item.getBoundingClientRect().top;
-        if (top < window.innerHeight - 80) {
-          item.classList.add("show");
-        }
-      });
-    }
-
-    revealOnScroll();
-    window.addEventListener("scroll", revealOnScroll);
   </script>
 
 </body>
