@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -28,9 +29,6 @@
       position:relative;
     }
 
-    /* =========================
-       INTRO
-    ========================== */
     .intro-loader{
       position:fixed;
       inset:0;
@@ -63,9 +61,6 @@
       filter:blur(16px);
     }
 
-    /* =========================
-       NAME STYLING
-    ========================== */
     .ice-name,
     .main-script{
       font-family:'Great Vibes',cursive;
@@ -86,7 +81,7 @@
     }
 
     .main-script{
-      font-size:68px; /* reduced to stop overlap */
+      font-size:68px;
       color:#c75d7c;
       margin-top:10px;
       margin-bottom:20px;
@@ -106,14 +101,8 @@
     }
 
     @keyframes nameGlowPulse{
-      0%,100%{
-        transform:scale(1);
-        opacity:0.75;
-      }
-      50%{
-        transform:scale(1.08);
-        opacity:1;
-      }
+      0%,100%{ transform:scale(1); opacity:0.75; }
+      50%{ transform:scale(1.08); opacity:1; }
     }
 
     .ice-name span,
@@ -156,21 +145,9 @@
     .hero-glow-name{ animation-delay:0.3s; }
 
     @keyframes glowReveal{
-      0%{
-        opacity:0;
-        filter:blur(14px);
-        transform:translateY(18px) scale(0.98);
-      }
-      60%{
-        opacity:1;
-        filter:blur(2px);
-        transform:translateY(0) scale(1.01);
-      }
-      100%{
-        opacity:1;
-        filter:blur(0);
-        transform:translateY(0) scale(1);
-      }
+      0%{ opacity:0; filter:blur(14px); transform:translateY(18px) scale(0.98); }
+      60%{ opacity:1; filter:blur(2px); transform:translateY(0) scale(1.01); }
+      100%{ opacity:1; filter:blur(0); transform:translateY(0) scale(1); }
     }
 
     .triple-loader{
@@ -188,20 +165,9 @@
       border:3px solid transparent;
     }
 
-    .ring1{
-      border-top:3px solid #f0a8bf;
-      animation:spin 1.4s linear infinite;
-    }
-
-    .ring2{
-      border-right:3px solid #f6c1d2;
-      animation:spinReverse 2s linear infinite;
-    }
-
-    .ring3{
-      border-bottom:3px solid #d77795;
-      animation:spin 2.6s linear infinite;
-    }
+    .ring1{ border-top:3px solid #f0a8bf; animation:spin 1.4s linear infinite; }
+    .ring2{ border-right:3px solid #f6c1d2; animation:spinReverse 2s linear infinite; }
+    .ring3{ border-bottom:3px solid #d77795; animation:spin 2.6s linear infinite; }
 
     @keyframes spin{ to{ transform:rotate(360deg); } }
     @keyframes spinReverse{ to{ transform:rotate(-360deg); } }
@@ -228,9 +194,6 @@
       background-position:center;
     }
 
-    /* =========================
-       FLOWERS
-    ========================== */
     .flowers{
       position:fixed;
       inset:0;
@@ -270,33 +233,10 @@
       pointer-events:none;
     }
 
-    .blob.one{
-      width:220px;
-      height:220px;
-      background:#ffd5e4;
-      top:8%;
-      left:-60px;
-    }
+    .blob.one{ width:220px; height:220px; background:#ffd5e4; top:8%; left:-60px; }
+    .blob.two{ width:280px; height:280px; background:#ffe2ec; bottom:8%; right:-70px; }
+    .blob.three{ width:200px; height:200px; background:#f9d9e7; top:45%; left:65%; }
 
-    .blob.two{
-      width:280px;
-      height:280px;
-      background:#ffe2ec;
-      bottom:8%;
-      right:-70px;
-    }
-
-    .blob.three{
-      width:200px;
-      height:200px;
-      background:#f9d9e7;
-      top:45%;
-      left:65%;
-    }
-
-    /* =========================
-       LAYOUT
-    ========================== */
     .section{
       padding:38px 16px;
       position:relative;
@@ -391,7 +331,7 @@
     }
 
     /* =========================
-       COUNTDOWN FIXED
+       COUNTDOWN — FIXED DOT
     ========================== */
     .countdown-wrap{
       display:flex;
@@ -410,6 +350,7 @@
       justify-content:center;
     }
 
+    /* SVG sits behind everything */
     .circle-box svg{
       width:122px;
       height:122px;
@@ -435,18 +376,19 @@
       transition:stroke-dashoffset 1s linear;
     }
 
-    /* PERFECTLY CENTERED MOVING DOT */
-    .moving-heart{
+    /* The dot — positioned via JS using transform:translate so it sits exactly on the arc tip */
+    .moving-dot{
       position:absolute;
-      width:10px;
-      height:10px;
+      width:11px;
+      height:11px;
       border-radius:50%;
-      background:radial-gradient(circle at 30% 30%, #fff, #fbe6ee 60%, #d77795 100%);
+      background:radial-gradient(circle at 35% 35%, #fff 0%, #fbe6ee 50%, #d77795 100%);
       box-shadow:
-        0 0 6px rgba(215,119,149,0.16),
-        0 0 10px rgba(255,255,255,0.42);
-      z-index:4;
+        0 0 0 2px rgba(255,255,255,0.7),
+        0 0 8px rgba(215,119,149,0.45);
+      z-index:5;
       pointer-events:none;
+      /* JS sets left/top to the arc coords; translate(-50%,-50%) keeps it centred on that point */
       transform:translate(-50%, -50%);
     }
 
@@ -642,32 +584,83 @@
       cursor:pointer;
     }
 
+    /* =========================
+       FOOTER — ELEGANT REDESIGN
+    ========================== */
     .footer{
-      padding:34px 16px 48px;
+      padding:48px 16px 56px;
       color:#a07786;
       font-size:14px;
       position:relative;
       z-index:2;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:0;
     }
 
-    .heart-gb{
-      font-family:'Great Vibes',cursive;
-      font-size:106px;
-      line-height:1;
-      color:#c75d7c;
-      letter-spacing:-20px;
-      transform:rotate(-2deg);
-      text-shadow:
-        0 0 20px rgba(215,119,149,0.10),
-        0 8px 20px rgba(215,119,149,0.06);
-      position:relative;
+    .footer-divider{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      margin-bottom:28px;
+      width:100%;
+      max-width:340px;
+    }
+
+    .footer-divider-line{
+      flex:1;
+      height:1px;
+      background:linear-gradient(to right, transparent, rgba(215,119,149,0.35), transparent);
+    }
+
+    .footer-divider-symbol{
+      color:#d08aa0;
+      font-size:18px;
+      font-family:'Cormorant Garamond',serif;
+      opacity:0.8;
+    }
+
+    /* Monogram — elegant interlocked initials */
+    .footer-monogram{
+      font-family:'Great Vibes', cursive;
+      font-size:72px;
+      line-height:1.2;
+      background:linear-gradient(145deg, #e8a0b8 0%, #c75d7c 50%, #a8456a 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      letter-spacing:6px;
+      filter:drop-shadow(0 2px 12px rgba(199,93,124,0.18));
+      margin-bottom:6px;
+      padding:10px 24px;
+      overflow:visible;
+      display:inline-block;
+      width:auto;
+    }
+
+    .footer-names{
+      font-family:'Cormorant Garamond', serif;
+      font-size:18px;
+      font-weight:500;
+      color:#b07080;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      margin-bottom:14px;
     }
 
     .footer-hashtag{
-      font-size:15px;
-      letter-spacing:2px;
-      color:#b67d90;
+      font-size:14px;
+      letter-spacing:2.5px;
+      color:#c08898;
       font-weight:500;
+      font-family:'Montserrat', sans-serif;
+      padding:8px 22px;
+      border:1px solid rgba(215,119,149,0.20);
+      border-radius:999px;
+      background:rgba(255,255,255,0.50);
+      backdrop-filter:blur(6px);
     }
 
     .reveal{
@@ -687,59 +680,29 @@
     }
 
     @media (max-width:768px){
-      .ice-name{
-        font-size:62px;
-      }
+      .ice-name{ font-size:62px; }
+      .main-script{ font-size:52px; margin-top:8px; margin-bottom:18px; }
+      .sub-text{ font-size:25px; }
+      .message-text{ font-size:23px; }
+      .upload-heading{ font-size:38px; }
+      .footer-monogram{ font-size:58px; padding:8px 20px; }
 
-      .main-script{
-        font-size:52px; /* smaller on mobile to avoid overlap */
-        margin-top:8px;
-        margin-bottom:18px;
-      }
+      .upload-circle{ width:195px; height:195px; }
 
-      .sub-text{font-size:25px}
-      .message-text{font-size:23px}
-      .upload-heading{font-size:38px}
-      .heart-gb{font-size:86px; letter-spacing:-16px;}
-
-      .upload-circle{
-        width:195px;
-        height:195px;
-      }
-
-      .circle-box{
-        width:104px;
-        height:104px;
-      }
-
-      .circle-box svg{
-        width:104px;
-        height:104px;
-      }
-
-      .circle-number{
-        font-size:26px;
-      }
-
-      .circle-label{
-        font-size:10px;
-        letter-spacing:1px;
-      }
-
-      .small-title{
-        letter-spacing:5px;
-        font-size:11px;
-      }
-
-      .countdown-wrap{
-        gap:8px;
-      }
+      .circle-box{ width:104px; height:104px; }
+      .circle-box svg{ width:104px; height:104px; }
+      .circle-number{ font-size:26px; }
+      .circle-label{ font-size:10px; letter-spacing:1px; }
+      .small-title{ letter-spacing:5px; font-size:11px; }
+      .countdown-wrap{ gap:8px; }
     }
   </style>
+
 </head>
 <body>
 
   <!-- INTRO -->
+
   <div class="intro-loader" id="introLoader">
     <div class="ice-name intro-glow-name">
       <span>Gokul</span>
@@ -748,15 +711,19 @@
     </div>
     <div class="ice-sub">A Beautiful Beginning</div>
 
-    <div class="triple-loader">
-      <div class="ring ring1"></div>
-      <div class="ring ring2"></div>
-      <div class="ring ring3"></div>
-      <div class="center-heart"></div>
-    </div>
+```
+<div class="triple-loader">
+  <div class="ring ring1"></div>
+  <div class="ring ring2"></div>
+  <div class="ring ring3"></div>
+  <div class="center-heart"></div>
+</div>
+```
+
   </div>
 
-  <!-- MAIN PAGE PETALS -->
+  <!-- PETALS -->
+
   <div class="flowers">
     <div class="petal">🌸</div>
     <div class="petal">🌸</div>
@@ -773,12 +740,14 @@
   <div class="blob three"></div>
 
   <!-- MUSIC -->
-  <button class="music-btn" onclick="toggleMusic()">🎵</button>
-  <audio id="bgMusic" loop playsinline preload="auto">
-    <source src="./Song.mp3" type="audio/mpeg">
-  </audio>
+
+<button class="music-btn" onclick="toggleMusic()">🎵</button>
+<audio id="bgMusic" loop playsinline preload="auto">
+<source src="./Song.mp3" type="audio/mpeg">
+</audio>
 
   <!-- HERO -->
+
   <section class="section hero">
     <div class="hero-box">
       <div class="divider">
@@ -787,22 +756,26 @@
         <div class="divider-line"></div>
       </div>
 
-      <div class="small-title">Wedding Invitation</div>
+```
+  <div class="small-title">Wedding Invitation</div>
 
-      <div class="main-script hero-glow-name">
-        <span>Gokul</span>
-        <span class="amp">&</span>
-        <span>Bharathi</span>
-      </div>
+  <div class="main-script hero-glow-name">
+    <span>Gokul</span>
+    <span class="amp">&</span>
+    <span>Bharathi</span>
+  </div>
 
-      <div class="sub-text">
-        With the blessings of our families, we joyfully invite you to celebrate
-        our wedding and bless us as we begin our beautiful journey together.
-      </div>
-    </div>
+  <div class="sub-text">
+    With the blessings of our families, we joyfully invite you to celebrate
+    our wedding and bless us as we begin our beautiful journey together.
+  </div>
+</div>
+```
+
   </section>
 
   <!-- COUNTDOWN -->
+
   <section class="section reveal">
     <div class="divider">
       <div class="divider-line"></div>
@@ -810,64 +783,72 @@
       <div class="divider-line"></div>
     </div>
 
-    <div class="small-title">Save The Date</div>
-    <div class="sub-text" style="font-size:26px; margin-bottom:6px;">
-      21st November 2026
+```
+<div class="small-title">Save The Date</div>
+<div class="sub-text" style="font-size:26px; margin-bottom:6px;">
+  21st November 2026
+</div>
+<div class="small-title">Countdown To Forever</div>
+
+<div class="countdown-wrap">
+  <!-- Days -->
+  <div class="circle-box" id="boxDays">
+    <div class="moving-dot" id="dotDays"></div>
+    <svg viewBox="0 0 122 122">
+      <circle class="circle-bg" cx="61" cy="61" r="52"></circle>
+      <circle class="circle-progress" id="daysCircle" cx="61" cy="61" r="52"></circle>
+    </svg>
+    <div class="circle-content">
+      <div class="circle-number" id="days">0</div>
+      <div class="circle-label">Days</div>
     </div>
-    <div class="small-title">Countdown To Forever</div>
+  </div>
 
-    <div class="countdown-wrap">
-      <div class="circle-box">
-        <div class="moving-heart" id="daysHeart"></div>
-        <svg viewBox="0 0 122 122">
-          <circle class="circle-bg" cx="61" cy="61" r="52"></circle>
-          <circle class="circle-progress" id="daysCircle" cx="61" cy="61" r="52"></circle>
-        </svg>
-        <div class="circle-content">
-          <div class="circle-number" id="days">0</div>
-          <div class="circle-label">Days</div>
-        </div>
-      </div>
-
-      <div class="circle-box">
-        <div class="moving-heart" id="hoursHeart"></div>
-        <svg viewBox="0 0 122 122">
-          <circle class="circle-bg" cx="61" cy="61" r="52"></circle>
-          <circle class="circle-progress" id="hoursCircle" cx="61" cy="61" r="52"></circle>
-        </svg>
-        <div class="circle-content">
-          <div class="circle-number" id="hours">0</div>
-          <div class="circle-label">Hours</div>
-        </div>
-      </div>
-
-      <div class="circle-box">
-        <div class="moving-heart" id="minutesHeart"></div>
-        <svg viewBox="0 0 122 122">
-          <circle class="circle-bg" cx="61" cy="61" r="52"></circle>
-          <circle class="circle-progress" id="minutesCircle" cx="61" cy="61" r="52"></circle>
-        </svg>
-        <div class="circle-content">
-          <div class="circle-number" id="minutes">0</div>
-          <div class="circle-label">Minutes</div>
-        </div>
-      </div>
-
-      <div class="circle-box">
-        <div class="moving-heart" id="secondsHeart"></div>
-        <svg viewBox="0 0 122 122">
-          <circle class="circle-bg" cx="61" cy="61" r="52"></circle>
-          <circle class="circle-progress" id="secondsCircle" cx="61" cy="61" r="52"></circle>
-        </svg>
-        <div class="circle-content">
-          <div class="circle-number" id="seconds">0</div>
-          <div class="circle-label">Seconds</div>
-        </div>
-      </div>
+  <!-- Hours -->
+  <div class="circle-box" id="boxHours">
+    <div class="moving-dot" id="dotHours"></div>
+    <svg viewBox="0 0 122 122">
+      <circle class="circle-bg" cx="61" cy="61" r="52"></circle>
+      <circle class="circle-progress" id="hoursCircle" cx="61" cy="61" r="52"></circle>
+    </svg>
+    <div class="circle-content">
+      <div class="circle-number" id="hours">0</div>
+      <div class="circle-label">Hours</div>
     </div>
+  </div>
+
+  <!-- Minutes -->
+  <div class="circle-box" id="boxMinutes">
+    <div class="moving-dot" id="dotMinutes"></div>
+    <svg viewBox="0 0 122 122">
+      <circle class="circle-bg" cx="61" cy="61" r="52"></circle>
+      <circle class="circle-progress" id="minutesCircle" cx="61" cy="61" r="52"></circle>
+    </svg>
+    <div class="circle-content">
+      <div class="circle-number" id="minutes">0</div>
+      <div class="circle-label">Minutes</div>
+    </div>
+  </div>
+
+  <!-- Seconds -->
+  <div class="circle-box" id="boxSeconds">
+    <div class="moving-dot" id="dotSeconds"></div>
+    <svg viewBox="0 0 122 122">
+      <circle class="circle-bg" cx="61" cy="61" r="52"></circle>
+      <circle class="circle-progress" id="secondsCircle" cx="61" cy="61" r="52"></circle>
+    </svg>
+    <div class="circle-content">
+      <div class="circle-number" id="seconds">0</div>
+      <div class="circle-label">Seconds</div>
+    </div>
+  </div>
+</div>
+```
+
   </section>
 
   <!-- UPLOAD -->
+
   <section class="section upload-section reveal">
     <div class="divider">
       <div class="divider-line"></div>
@@ -875,36 +856,40 @@
       <div class="divider-line"></div>
     </div>
 
-    <div class="small-title">Captured Moments</div>
-    <div class="sub-text" style="max-width:760px;font-size:26px;font-style:italic;">
-      Freeze the magic, frame the memories — every moment deserves to last forever
-    </div>
+```
+<div class="small-title">Captured Moments</div>
+<div class="sub-text" style="max-width:760px;font-size:26px;font-style:italic;">
+  Freeze the magic, frame the memories — every moment deserves to last forever
+</div>
 
-    <div class="upload-circle-wrap">
-      <label for="photoUpload" class="upload-circle">
-        <div class="upload-icon">📷</div>
-        <div class="upload-text">Select Photo</div>
-      </label>
-      <input type="file" id="photoUpload" accept="image/*" hidden>
-    </div>
+<div class="upload-circle-wrap">
+  <label for="photoUpload" class="upload-circle">
+    <div class="upload-icon">📷</div>
+    <div class="upload-text">Select Photo</div>
+  </label>
+  <input type="file" id="photoUpload" accept="image/*" hidden>
+</div>
 
-    <img id="previewImage" alt="Preview">
+<img id="previewImage" alt="Preview">
 
-    <div class="upload-heading">Capture & Share the Magic</div>
-    <div class="upload-desc">
-      Select your favorite moment here and then continue to upload it to our shared wedding album.
-    </div>
+<div class="upload-heading">Capture & Share the Magic</div>
+<div class="upload-desc">
+  Select your favorite moment here and then continue to upload it to our shared wedding album.
+</div>
 
-    <div class="upload-note" id="uploadNote">
-      Choose a photo first 💗
-    </div>
+<div class="upload-note" id="uploadNote">
+  Choose a photo first 💗
+</div>
 
-    <a id="uploadBtn" href="https://photos.app.goo.gl/a9eJXpcDNMeJuPK4A" target="_blank" class="btn" style="display:none;">
-      Continue to Upload
-    </a>
+<a id="uploadBtn" href="https://photos.app.goo.gl/a9eJXpcDNMeJuPK4A" target="_blank" class="btn" style="display:none;">
+  Continue to Upload
+</a>
+```
+
   </section>
 
   <!-- MESSAGE -->
+
   <section class="section reveal">
     <div class="message-box" id="messageBox">
       <div class="message-text">
@@ -917,6 +902,7 @@
   </section>
 
   <!-- DETAILS -->
+
   <section class="section reveal">
     <div class="divider">
       <div class="divider-line"></div>
@@ -924,32 +910,46 @@
       <div class="divider-line"></div>
     </div>
 
-    <div class="small-title">Wedding Details</div>
+```
+<div class="small-title">Wedding Details</div>
 
-    <div class="card-grid">
-      <div class="card">
-        <h3>Date</h3>
-        <p>21st November 2026<br>Wedding Ceremony</p>
-      </div>
+<div class="card-grid">
+  <div class="card">
+    <h3>Date</h3>
+    <p>21st November 2026<br>Wedding Ceremony</p>
+  </div>
 
-      <div class="card">
-        <h3>Venue</h3>
-        <p>Kulandhai Velayudasamy Seva Sanga<br>Thirumana Mandapam</p>
-        <a class="btn" href="https://maps.app.goo.gl/gh4hvVGi5xa8dMxw8?g_st=ic" target="_blank">Open Map</a>
-      </div>
+  <div class="card">
+    <h3>Venue</h3>
+    <p>Kulandhai Velayudasamy Seva Sanga<br>Thirumana Mandapam</p>
+    <a class="btn" href="https://maps.app.goo.gl/gh4hvVGi5xa8dMxw8?g_st=ic" target="_blank">Open Map</a>
+  </div>
 
-      <div class="card">
-        <h3>RSVP</h3>
-        <p>We would be happy to celebrate this special day with you.</p>
-        <a class="btn" href="https://wa.me/919894303659" target="_blank">WhatsApp</a>
-      </div>
-    </div>
+  <div class="card">
+    <h3>RSVP</h3>
+    <p>We would be happy to celebrate this special day with you.</p>
+    <a class="btn" href="https://wa.me/919894303659" target="_blank">WhatsApp</a>
+  </div>
+</div>
+```
+
   </section>
 
-  <!-- FOOTER -->
+  <!-- FOOTER — ELEGANT -->
+
   <div class="footer">
-    <div class="heart-gb">GB</div>
-    <div class="footer-hashtag">#gokulwedsbharathi</div>
+    <div class="footer-divider">
+      <div class="footer-divider-line"></div>
+      <div class="footer-divider-symbol">✦</div>
+      <div class="footer-divider-line"></div>
+    </div>
+
+```
+<div class="footer-monogram">G &amp; B</div>
+<div class="footer-names">Gokul &nbsp;·&nbsp; Bharathi</div>
+<div class="footer-hashtag">#gokulwedsbharathi</div>
+```
+
   </div>
 
   <script>
@@ -969,113 +969,120 @@
         music.pause();
         isPlaying = false;
       } else {
-        music.play().then(() => {
-          isPlaying = true;
-        }).catch(err => console.log(err));
+        music.play().then(() => { isPlaying = true; }).catch(err => console.log(err));
       }
     }
 
     document.addEventListener("click", function autoPlayOnce() {
       if (!isPlaying) {
         music.volume = 0.5;
-        music.play().then(() => {
-          isPlaying = true;
-        }).catch(err => console.log(err));
+        music.play().then(() => { isPlaying = true; }).catch(err => console.log(err));
       }
       document.removeEventListener("click", autoPlayOnce);
     });
 
-    // COUNTDOWN
+    // =============================================
+    //  COUNTDOWN  — dot sits exactly on arc tip
+    // =============================================
     const endDate = new Date(2026, 10, 21, 0, 0, 0).getTime();
 
-    function setCircle(circleId, value, max){
+    // SVG viewBox is 122×122, circle centre = (61,61), radius = 52
+    // The element rendered size may differ from 122px, so we scale.
+    const SVG_SIZE   = 122;
+    const SVG_CENTER = 61;
+    const SVG_RADIUS = 52;
+
+    function setCircle(circleId, value, max) {
       const circle = document.getElementById(circleId);
-      const radius = 52;
-      const circumference = 2 * Math.PI * radius;
-
-      circle.style.strokeDasharray = circumference;
-      circle.style.strokeDashoffset =
-        circumference - (value / max) * circumference;
+      const circumference = 2 * Math.PI * SVG_RADIUS;
+      circle.style.strokeDasharray  = circumference;
+      circle.style.strokeDashoffset = circumference - (value / max) * circumference;
     }
 
-    function moveHeart(heartId, value, max){
-      const heart = document.getElementById(heartId);
+    /**
+     * Place the dot at the leading edge (tip) of the progress arc.
+     * The SVG is rotated -90° in CSS so 0% starts at the top.
+     * Angle 0 → top  (i.e. -90° in standard coords → we add -90° offset).
+     */
+    function moveDot(dotId, boxId, value, max) {
+      const dot = document.getElementById(dotId);
+      const box = document.getElementById(boxId);
 
-      const radius = 52;
-      const center = 61;
+      // Fraction of the arc that is filled
+      const fraction = value / max;
 
-      const angle = ((value / max) * 360 - 90) * (Math.PI / 180);
+      // Angle in radians: start at top (-π/2), go clockwise
+      const angle = (fraction * 2 * Math.PI) - (Math.PI / 2);
 
-      const x = center + radius * Math.cos(angle);
-      const y = center + radius * Math.sin(angle);
+      // Position on the SVG coordinate space
+      const svgX = SVG_CENTER + SVG_RADIUS * Math.cos(angle);
+      const svgY = SVG_CENTER + SVG_RADIUS * Math.sin(angle);
 
-      heart.style.left = x + "px";
-      heart.style.top = y + "px";
+      // Scale factor: rendered pixel size / SVG viewBox size
+      const rendered = box.offsetWidth || SVG_SIZE;
+      const scale    = rendered / SVG_SIZE;
+
+      // Apply as left/top (the CSS keeps transform:translate(-50%,-50%))
+      dot.style.left = (svgX * scale) + "px";
+      dot.style.top  = (svgY * scale) + "px";
     }
 
-    function updateCountdown(){
-      const now = new Date().getTime();
-      let diff = endDate - now;
-      if(diff < 0) diff = 0;
+    function updateCountdown() {
+      const now  = Date.now();
+      let diff   = endDate - now;
+      if (diff < 0) diff = 0;
 
-      const days = Math.floor(diff / (1000*60*60*24));
-      const hours = Math.floor((diff/(1000*60*60)) % 24);
-      const minutes = Math.floor((diff/(1000*60)) % 60);
-      const seconds = Math.floor((diff/1000) % 60);
+      const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours   = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
 
-      document.getElementById("days").textContent = days;
-      document.getElementById("hours").textContent = hours;
+      document.getElementById("days").textContent    = days;
+      document.getElementById("hours").textContent   = hours;
       document.getElementById("minutes").textContent = minutes;
       document.getElementById("seconds").textContent = seconds;
 
-      setCircle("daysCircle", days % 365, 365);
-      setCircle("hoursCircle", hours, 24);
-      setCircle("minutesCircle", minutes, 60);
-      setCircle("secondsCircle", seconds, 60);
+      setCircle("daysCircle",    days % 365, 365);
+      setCircle("hoursCircle",   hours,      24);
+      setCircle("minutesCircle", minutes,    60);
+      setCircle("secondsCircle", seconds,    60);
 
-      moveHeart("daysHeart", days % 365, 365);
-      moveHeart("hoursHeart", hours, 24);
-      moveHeart("minutesHeart", minutes, 60);
-      moveHeart("secondsHeart", seconds, 60);
+      moveDot("dotDays",    "boxDays",    days % 365, 365);
+      moveDot("dotHours",   "boxHours",   hours,      24);
+      moveDot("dotMinutes", "boxMinutes", minutes,    60);
+      moveDot("dotSeconds", "boxSeconds", seconds,    60);
     }
 
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
     // SCROLL REVEAL
-    const box = document.getElementById("messageBox");
+    const box     = document.getElementById("messageBox");
     const reveals = document.querySelectorAll(".reveal");
 
-    function revealOnScroll(){
-      reveals.forEach((el) => {
-        const rect = el.getBoundingClientRect();
-        if(rect.top < window.innerHeight - 80){
+    function revealOnScroll() {
+      reveals.forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 80)
           el.classList.add("show");
-        }
       });
-
-      const rect = box.getBoundingClientRect();
-      const trigger = window.innerHeight * 0.75;
-      if(rect.top < trigger){
+      if (box.getBoundingClientRect().top < window.innerHeight * 0.75)
         box.classList.add("active");
-      }
     }
 
     window.addEventListener("scroll", revealOnScroll);
-    window.addEventListener("load", revealOnScroll);
+    window.addEventListener("load",   revealOnScroll);
 
     // PHOTO PREVIEW
     const photoUpload = document.getElementById("photoUpload");
     const previewImage = document.getElementById("previewImage");
-    const uploadBtn = document.getElementById("uploadBtn");
-    const uploadNote = document.getElementById("uploadNote");
+    const uploadBtn    = document.getElementById("uploadBtn");
+    const uploadNote   = document.getElementById("uploadNote");
 
     photoUpload.addEventListener("change", function () {
       const file = this.files[0];
       if (!file) return;
-
       const reader = new FileReader();
-      reader.onload = function (e) {
+      reader.onload = e => {
         previewImage.src = e.target.result;
         previewImage.style.display = "block";
         uploadBtn.style.display = "inline-block";
@@ -1084,5 +1091,6 @@
       reader.readAsDataURL(file);
     });
   </script>
+
 </body>
 </html>
